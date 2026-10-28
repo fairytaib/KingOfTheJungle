@@ -1,3 +1,6 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c0b0d">
 <title>King of the Jungle</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -343,6 +346,140 @@ button, input { font: inherit; color: inherit; }
 .codex h4 { margin: 8px 0 2px; font-family: var(--f-num); font-weight: 400; font-size: 19px; letter-spacing: .1em; color: var(--ember); text-transform: uppercase; }
 .over-title { font-size: clamp(36px, 9vw, 54px) !important; }
 
+
+/* ---------- Handy ---------- */
+.quick, .tabbar { display: none; }
+.legend-box summary { cursor: pointer; color: var(--muted); font-size: 14px; margin-bottom: 6px; }
+@media (min-width: 900px) { .legend-box summary { display: none; } }
+@media (max-width: 899px) {
+  body { font-size: 17px; padding-top: 6px; padding-left: max(10px, env(safe-area-inset-left, 0px)); padding-right: max(10px, env(safe-area-inset-right, 0px)); }
+  #game { padding-bottom: calc(150px + env(safe-area-inset-bottom, 0px)); }
+  #game:not([data-pane="map"]) [data-pane="map"],
+  #game:not([data-pane="alpha"]) [data-pane="alpha"],
+  #game:not([data-pane="pack"]) [data-pane="pack"],
+  #game:not([data-pane="log"]) [data-pane="log"] { display: none !important; }
+  .layout, .col { gap: 10px; }
+
+  /* Kopfzeile */
+  .wrap { overflow-x: clip; }
+  .topbar { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; margin-bottom: 10px; }
+  .tb-left { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; min-width: 0; }
+  .tb-left .season-chip, .tb-left .destiny-chip { min-width: 0; text-align: left; }
+  .species-strip { min-width: 0; }
+  .round { font-size: 32px; white-space: nowrap; }
+  .round small { display: none; }
+  .destiny-chip b { flex: 1; text-align: left; }
+  .panel h3 { letter-spacing: .06em; }
+  .question { letter-spacing: .02em; }
+  .report .rep-why { display: none; }
+  .tb-left .season-chip, .tb-left .destiny-chip { grid-column: 1 / -1; order: 5; justify-content: flex-start; min-height: 40px; font-size: 16px; }
+  .tb-left .destiny-chip { order: 6; }
+  .destiny-chip .dbar { flex: 1; width: auto; min-width: 50px; }
+  #btnCodex { order: 2; } #btnSound { order: 3; }
+  .species-strip { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding: 0 0 2px; scroll-snap-type: x proximity; }
+  .species-strip::-webkit-scrollbar { display: none; }
+  .sp-chip { flex: none; font-size: 16px; padding: 5px 10px 5px 6px; scroll-snap-align: start; }
+
+  /* Karte */
+  .map-frame { padding: 4px; margin: 0 -4px; }
+  .quick { display: grid; gap: 6px; }
+  .quick .status-strip { margin: 0; grid-template-columns: 1fr 1fr; }
+  .quick .status-strip .ss-name { grid-column: 1 / -1; font-size: 17px; }
+  .quick .why-line { font-size: 16px; color: #e2d9c8; background: var(--panel); border-left: 3px solid var(--ember); padding: 7px 10px; }
+  .quick .why-line b { color: var(--ember); font-weight: 600; }
+  .quick .threat-line { font-size: 16px; color: #f0d4cc; background: #2a1616; border-left: 3px solid var(--blood); padding: 7px 10px; }
+  .legend { font-size: 15px; gap: 8px 14px; }
+  .legend-box { background: var(--panel); border: 1px solid var(--line); padding: 10px 12px; }
+  .legend-box summary { margin: 0; font-size: 16px; }
+  .legend-box[open] summary { margin-bottom: 8px; }
+
+  /* Weiter-Knopf und Tableiste unten */
+  .next-row { position: fixed; left: 0; right: 0; bottom: calc(60px + env(safe-area-inset-bottom, 0px)); z-index: 40; padding: 14px max(10px, env(safe-area-inset-left, 0px)) 8px; background: linear-gradient(to bottom, rgba(12, 11, 13, 0), var(--night) 45%); }
+  .next-row .btn.primary { font-size: 20px; padding-block: 15px; min-height: 56px; }
+  .next-row .hint { display: none; }
+  .tabbar:not([hidden]) { display: grid; }
+  .tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 41; grid-template-columns: repeat(4, 1fr); background: #0f0d10; border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .tabbar button { position: relative; display: grid; justify-items: center; gap: 1px; background: none; border: 0; border-top: 3px solid transparent; color: var(--muted); padding: 7px 2px 8px; min-height: 60px; font-size: 14px; cursor: pointer; }
+  .tabbar button .ti { font-size: 20px; line-height: 1.1; }
+  .tabbar button[aria-selected="true"] { color: var(--ember); border-top-color: var(--ember); background: #17131a; }
+  .tabbar button:focus-visible { outline: 2px dashed var(--ember); outline-offset: -4px; }
+  .tb-badge { position: absolute; top: 5px; left: calc(50% + 10px); min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; background: var(--blood); color: #fff3ea; font-style: normal; font-size: 13px; font-weight: 700; line-height: 20px; text-align: center; }
+  .tb-badge.soft { background: var(--ember); color: var(--ember-ink); }
+
+  /* Größere Schrift und Tippflächen */
+  .btn { min-height: 46px; font-size: 16px; }
+  .btn.small { min-height: 42px; padding: 8px 14px; font-size: 15px; }
+  .icon-btn { font-size: 15px; padding: 8px 6px; }
+  .panel { padding: 14px 12px; }
+  .panel h3 { font-size: 20px; }
+  .chip, .chip-btn { font-size: 15px; padding: 7px 10px; }
+  .chips { gap: 8px; }
+  .meter { grid-template-columns: 92px 1fr 70px; font-size: 16px; }
+  .meter .val { font-size: 22px; }
+  .meter .track { height: 11px; }
+  .main-card .nm { font-size: 23px; }
+  .main-card .sub { font-size: 16px; }
+  .stat .k { font-size: 18px; } .stat .v { font-size: 34px; } .stat .m { font-size: 19px; }
+  .sect .lbl { font-size: 18px; }
+  .why { font-size: 17px; } .why-note { font-size: 15px; }
+  .threat-sect p { font-size: 16px; }
+  .report ul { font-size: 16px; gap: 7px; }
+  .rep-loss, .rep-why, .rep-threat { font-size: 16px; }
+  .tile-info .loc { font-size: 19px; } .tile-info .state { font-size: 15px; }
+  .relation { font-size: 16px; }
+  .unit-row { font-size: 16px; grid-template-columns: 34px 1fr auto; }
+  .unit-row .ln small { font-size: 14px; }
+  .log { font-size: 16px; gap: 9px; max-height: none; }
+  .log li { grid-template-columns: 40px 1fr; }
+  .log .r { font-size: 19px; }
+  .roster { max-height: none; gap: 4px; }
+  .roster-row { font-size: 16px; padding: 9px 6px; min-height: 48px; grid-template-columns: 34px 1fr auto; }
+  .roster-head label { font-size: 15px; }
+  .roster-head select { font-size: 16px; padding: 8px 8px; min-height: 42px; }
+  .calls-info { font-size: 15px; }
+  .call-btn { padding: 11px 12px; min-height: 64px; }
+  .call-btn b { font-size: 17px; } .call-btn span { font-size: 14px; }
+  #btnQuit { width: 100%; }
+
+  /* Ereignisfenster als Vollbild-Blatt */
+  .sheet { max-width: none; max-height: 100dvh; max-height: 100vh; border-left: 0; border-right: 0; border-bottom: 0; padding-top: 16px; gap: 12px; }
+  @supports (height: 100dvh) { .sheet { max-height: 100dvh; } }
+  .intro { font-size: 18px; }
+  .question { font-size: 21px; }
+  .choice { padding: 14px; min-height: 56px; }
+  .choice .c-l { font-size: 18px; }
+  .choice .c-m { font-size: 15px; }
+  .choice .odds { font-size: 21px; }
+  .ss-m { font-size: 15px; }
+  .ss-m .num { font-size: 20px; }
+  .status-strip { padding: 8px 10px; }
+  .fight-log { font-size: 15px; max-height: 190px; }
+  .allies { font-size: 15px; }
+  .fx .chip { font-size: 15px; }
+  .story p { font-size: 16px; }
+  .sheet > .btn.primary:last-child, .sheet > .btn.danger:last-child { position: sticky; bottom: 0; z-index: 2; box-shadow: 0 -14px 14px var(--panel), 0 3px 0 var(--shadow); width: 100%; min-height: 54px; font-size: 18px; }
+  .chase-track .ct { height: 54px; }
+  .scale button { min-height: 48px; }
+  .toasts { top: max(8px, env(safe-area-inset-top, 0px)); }
+  .toast { font-size: 16px; }
+
+  /* Start */
+  .hero { padding-block: 8px 16px; }
+  .sprite-row { gap: 8px; overflow: hidden; flex-wrap: nowrap; }
+  .namefield input { font-size: 17px; min-height: 48px; }
+  .beh-btn { min-height: 44px; padding: 8px 14px; font-size: 16px; }
+  .beh-desc { font-size: 16px; }
+  .class-card .nm { font-size: 20px; } .class-card .role { font-size: 15px; } .class-card p { font-size: 16px; }
+  .class-card[aria-pressed="false"] :is(.statbars, .trait, .destiny-line) { display: none; }
+  .class-card[aria-pressed="false"] p { color: var(--muted); }
+  .trait, .destiny-line { font-size: 15px; }
+  #start .start-actions { position: sticky; bottom: 0; z-index: 5; margin: 0 -10px; padding: 12px 10px calc(12px + env(safe-area-inset-bottom, 0px)); background: linear-gradient(to bottom, rgba(12, 11, 13, 0), var(--night) 30%); }
+  #btnStart { flex: 1 1 100%; min-height: 56px; font-size: 19px; }
+  #btnContinue { flex: 1 1 100%; }
+  .linkish { font-size: 15px; padding: 8px 0; }
+  .rules { font-size: 16px; }
+  .test-dl { font-size: 16px; } .test-ev { font-size: 15px; }
+}
 @media (prefers-reduced-motion: reduce) { .sheet, .modal.enter, .modal.enter .sheet, .sheet.swap > *, .modal.enter .sheet > *, .modal.enter .scene, .roll.rolling .d20 { animation: none !important; } }
 </style>
 
@@ -387,7 +524,7 @@ button, input { font: inherit; color: inherit; }
     </details>
   </section>
 
-  <section id="game" hidden>
+  <section id="game" hidden data-pane="map">
     <div class="topbar">
       <div class="tb-left">
         <div class="round" id="roundLbl">Runde 1</div>
@@ -400,27 +537,34 @@ button, input { font: inherit; color: inherit; }
     </div>
     <div class="layout">
       <div class="col">
-        <div class="map-frame"><canvas id="map" width="252" height="252" tabindex="0" aria-label="Spielkarte, 9 mal 9 Felder. Pfeiltasten wählen ein Feld."></canvas></div>
-        <div class="legend" id="legend"></div>
-        <div class="panel report" id="report" hidden></div>
-        <div class="panel tile-info" id="tileInfo" aria-live="polite"></div>
+        <div class="map-frame" data-pane="map"><canvas id="map" width="252" height="252" tabindex="0" aria-label="Spielkarte, 9 mal 9 Felder. Pfeiltasten wählen ein Feld."></canvas></div>
+        <div class="quick" id="quickStatus" data-pane="map"></div>
+        <div class="panel report" id="report" data-pane="map" hidden></div>
+        <details class="legend-box" id="legendBox" data-pane="map"><summary>Legende der Karte</summary><div class="legend" id="legend"></div></details>
+        <div class="panel tile-info" id="tileInfo" data-pane="map" aria-live="polite"></div>
       </div>
       <div class="col">
-        <div class="panel main-card" id="mainCard"></div>
+        <div class="panel main-card" id="mainCard" data-pane="alpha"></div>
         <div class="next-row">
           <button class="btn primary" id="btnNext">Nächste Runde</button>
           <p class="hint">Taste N</p>
         </div>
-        <div class="panel calls" id="calls"></div>
-        <div class="panel"><h3>Chronik</h3><ol class="log" id="log"></ol></div>
-        <div class="panel"><div class="roster-head"><h3>Dein Rudel</h3><label>Zuchtfokus <select id="focusSel"><option value="ausgewogen">Ausgewogen</option><option value="st">Kraft</option><option value="ge">Geschick</option><option value="ko">Zähigkeit</option><option value="we">Klugheit</option></select></label></div><div class="roster" id="roster"></div></div>
-        <button class="btn ghost" id="btnQuit">Partie beenden</button>
+        <div class="panel calls" id="calls" data-pane="pack"></div>
+        <div class="panel" data-pane="log"><h3>Chronik</h3><ol class="log" id="log"></ol></div>
+        <div class="panel" data-pane="pack"><div class="roster-head"><h3>Dein Rudel</h3><label>Zuchtfokus <select id="focusSel"><option value="ausgewogen">Ausgewogen</option><option value="st">Kraft</option><option value="ge">Geschick</option><option value="ko">Zähigkeit</option><option value="we">Klugheit</option></select></label></div><div class="roster" id="roster"></div></div>
+        <button class="btn ghost" id="btnQuit" data-pane="log">Partie beenden</button>
       </div>
     </div>
   </section>
 </div>
 
 <div class="clock" id="clock" hidden><div class="clock-box"><canvas id="clockCv" width="96" height="40" style="width:192px;height:80px"></canvas><div class="t" id="clockT"></div></div></div>
+<nav class="tabbar" id="tabbar" aria-label="Ansicht wählen" hidden>
+  <button type="button" data-tab="map" aria-selected="true"><span class="ti">▦</span><span>Karte</span><i class="tb-badge" hidden></i></button>
+  <button type="button" data-tab="alpha" aria-selected="false"><span class="ti">♛</span><span>Alphatier</span><i class="tb-badge" hidden></i></button>
+  <button type="button" data-tab="pack" aria-selected="false"><span class="ti">❖</span><span>Rudel</span><i class="tb-badge" hidden></i></button>
+  <button type="button" data-tab="log" aria-selected="false"><span class="ti">☰</span><span>Chronik</span><i class="tb-badge" hidden></i></button>
+</nav>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div class="modal" id="modal" hidden><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
 <script>
@@ -2510,8 +2654,44 @@ const Scenes = (function () {
     toast(`⚠ Gefahr: ${t.foe}${t.hungry ? ' (hungrig)' : ''} ${t.dist === 0 ? 'auf dem Feld von' : 'direkt neben'} ${t.target}.`, 'warn');
   }
 
+  /* ---------- Handy: Ansichten ---------- */
+  const mq = window.matchMedia ? matchMedia('(max-width: 899px)') : { matches: false };
+  const mobile = () => mq.matches;
+  let pane = 'map', logSeenR = 0;
+  function setPane(p, keepScroll) {
+    pane = p; $('game').dataset.pane = p;
+    $('tabbar').querySelectorAll('[data-tab]').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === p ? 'true' : 'false'));
+    if (p === 'log' && s) logSeenR = s.round;
+    if (p === 'map' && s) { sizeMap(); drawMap(); }
+    renderTabs();
+    if (!keepScroll) window.scrollTo(0, 0);
+  }
+  function renderTabs() {
+    if (!s) return;
+    const set = (k, txt, soft) => { const b = $('tabbar').querySelector(`[data-tab="${k}"] .tb-badge`); if (!b) return; b.hidden = !txt; b.textContent = txt || ''; b.classList.toggle('soft', !!soft); };
+    const m = me();
+    const threat = m && m.alive && G.threatsNear(s).some(t => t.main);
+    set('alpha', pane !== 'alpha' && m && m.alive && (m.pts > 0 || m.picks > 0 || threat) ? '!' : '', !threat);
+    set('pack', pane !== 'pack' && !s.over && G.callReady(s, 0) ? '•' : '', true);
+    const n = pane === 'log' ? 0 : s.log.filter(e => e.r > logSeenR).length;
+    set('log', n ? (n > 9 ? '9+' : String(n)) : '', true);
+  }
+  function renderQuick() {
+    const el = $('quickStatus'); if (!el) return;
+    const u = me(); if (!u || !u.alive) { el.innerHTML = ''; return; }
+    const th = G.threatsNear(s).filter(t => t.main);
+    const moved = u.px !== undefined && (u.px !== u.x || u.py !== u.y);
+    el.innerHTML = statusStrip()
+      + (u.why && u.why.length ? `<p class="why-line"><b>${moved ? 'Zog weiter' : 'Blieb'}:</b> ${esc(u.why.slice(0, 2).join(', '))}</p>` : '')
+      + (th.length ? `<p class="threat-line">⚠ ${esc(th[0].foe)}${th[0].hungry ? ', hungrig,' : ''} ${th[0].dist === 0 ? 'steht auf deinem Feld' : 'ist direkt neben dir'}.</p>` : '');
+  }
+  $('tabbar').querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { snd('tap'); setPane(b.dataset.tab); }));
+  const syncLegend = () => { const lb = $('legendBox'); if (lb) lb.open = !mobile(); };
+  if (mq.addEventListener) mq.addEventListener('change', () => { syncLegend(); if (s) { sizeMap(); render(); } });
+
   /* ---------- Start ---------- */
   function renderStart() {
+    $('tabbar').hidden = true;
     const hero = $('heroSprites'); hero.innerHTML = '';
     ['loewe', 'tiger', 'wolf', 'elefant', 'nashorn', 'baer', 'krokodil', 'schlange', 'affe', 'steinbock'].forEach((k, i) => hero.appendChild(spriteCanvas(k, ['#d39a45', '#c0873a', '#8b8287', '#6f6a66', '#7c746c', '#6b4a32', '#4e6b45', '#6d8a3a', '#7a5a3e', '#a08a6a'][i], 3)));
     const grid = $('classGrid'); grid.innerHTML = '';
@@ -2533,7 +2713,7 @@ const Scenes = (function () {
         const tr = document.createElement('div'); tr.className = 'trait'; tr.textContent = `${C.trait}. ${C.traitD}`; b.appendChild(tr);
         const ds = document.createElement('div'); ds.className = 'destiny-line'; ds.textContent = `Bestimmung: ${G.DESTINY[k].name}. ${G.DESTINY[k].desc}`; b.appendChild(ds);
       }
-      b.addEventListener('click', () => { if (!open) return; snd('tap'); chosenCls = k; grid.querySelectorAll('.class-card').forEach(x => x.setAttribute('aria-pressed', x.id === 'cls-' + k ? 'true' : 'false')); });
+      b.addEventListener('click', () => { if (!open) return; snd('tap'); chosenCls = k; grid.querySelectorAll('.class-card').forEach(x => x.setAttribute('aria-pressed', x.id === 'cls-' + k ? 'true' : 'false')); if (mobile()) b.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' }); });
       grid.appendChild(b);
     }
     const bg = $('behGrid'); bg.innerHTML = '';
@@ -2551,6 +2731,7 @@ const Scenes = (function () {
     $('start').hidden = true; $('game').hidden = false;
     const m = me(); sel = m ? { x: m.x, y: m.y } : { x: 4, y: 4 };
     if (!s.losses) s.losses = []; lossSeen = s.losses.length; tele();
+    $('tabbar').hidden = false; logSeenR = s.round - 1; syncLegend(); setPane('map', true);
     renderLegend(); sizeMap(); render(); window.scrollTo(0, 0);
     if (s.boonPick) openLegacy();
     else if (s.heirPick) openHeir();
@@ -2810,7 +2991,7 @@ const Scenes = (function () {
       const t = G.tileAt(s, u.x, u.y);
       const m = document.createElement('span'); m.innerHTML = `${u.main ? '♛ ' : ''}${esc(u.name)}${(u.titles || []).length ? ` <span class="title-tag sm">${esc(topTitle(u))}</span>` : ''}${u.relic ? ' <span class="relic-dot" title="' + esc(G.RELICS[u.relic].name) + '">◆</span>' : ''} <small>· Gen ${u.gen || 1} · ${ageTxt(u)} · ${G.BEHAV[u.beh].name} · ${u.mind || 'ruhig'}${u.buff.krank > 0 ? ' · krank' : ''}${u.inj.length ? ' · verletzt' : ''}</small>`; b.appendChild(m);
       const r = document.createElement('small'); r.textContent = `Lv ${u.lvl} · ${u.hp}/${G.maxHp(s, u)} LP · ST ${u.st} GE ${u.ge} KO ${u.ko} WE ${u.we}`; b.appendChild(r);
-      b.addEventListener('click', () => { sel = { x: u.x, y: u.y }; drawMap(); renderTile(); $('tileInfo').scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' }); });
+      b.addEventListener('click', () => { sel = { x: u.x, y: u.y }; if (mobile()) setPane('map', true); drawMap(); renderTile(); $('tileInfo').scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' }); });
       el.appendChild(b);
     }
     if (!us.length) el.innerHTML = '<p class="muted">Niemand mehr übrig.</p>';
@@ -2820,7 +3001,7 @@ const Scenes = (function () {
     const t = G.tileAt(s, u.x, u.y);
     try { Sound.ambience({ biome: t.biome, season: G.season(s).id, night: G.isNight(s), cata: s.cata ? s.cata.type : null, nearCata: s.cata ? s.tiles.some(x => G.cataAt(s, x.x, x.y) && Math.max(Math.abs(x.x - u.x), Math.abs(x.y - u.y)) <= 2) : false }); } catch (e) { /* egal */ }
   }
-  function render() { if (!s) return; renderTop(); drawMap(); renderMain(); renderCalls(); renderTile(); renderLog(); renderRoster(); $('btnNext').disabled = busy || !!s.over; updateAmbience(); }
+  function render() { if (!s) return; renderTop(); drawMap(); renderMain(); renderQuick(); renderCalls(); renderTile(); renderLog(); renderRoster(); renderTabs(); $('btnNext').disabled = busy || !!s.over; updateAmbience(); }
 
   /* ---------- Modal ---------- */
   function openModal(html, label, cls, scene) {
@@ -2889,6 +3070,7 @@ const Scenes = (function () {
   async function nextRound() {
     if (!s || busy || s.over) return;
     busy = true; $('btnNext').disabled = true; $('report').hidden = true; renderCalls();
+    if (mobile() && pane !== 'map') setPane('map');
     { const t = tele(), now = Date.now(); t.rt.push(Math.round((now - t.last) / 1000)); t.last = now; }
     await clockAnim();
     const o = G.beginRound(s);
@@ -2972,7 +3154,7 @@ const Scenes = (function () {
     const w = G.worldPhase(s);
     const m = me(); if (m) sel = { x: m.x, y: m.y };
     const mr = $('map').getBoundingClientRect();
-    if (mr.bottom < 80 || mr.top > window.innerHeight - 80) { $('map').scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' }); await wait(350); }
+    if (mr.top < -mr.height / 2 || mr.top > window.innerHeight - 200) { $('map').scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' }); await wait(350); }
     renderTop(); await animateMoves(w.moves); render();
     if (s.births > births0 && s.log.some(e => e.r === s.round && /Nachwuchs/.test(e.t))) snd('birth');
     if (s.fight) { openFight(() => { G.endFight(s); closeModal(); finishWorld(); }); return; }
@@ -2986,6 +3168,7 @@ const Scenes = (function () {
     const m = me(); if (m) sel = { x: m.x, y: m.y };
     render(); renderReport(r);
     announceLosses(); if (!s.over) warnThreats();
+    if (mobile() && !$('report').hidden) { const rr = $('report').getBoundingClientRect(), lim = window.innerHeight - 150; if (rr.bottom > lim) window.scrollBy({ top: Math.max(0, Math.min(rr.top - 70, rr.bottom - lim)), behavior: reduce ? 'auto' : 'smooth' }); }
     await checkUnlocks();
     if (s.boonPick && !s.over) { await new Promise(res => openLegacy(res)); }
     if (s.heirPick && !s.over) { await new Promise(res => openHeir(res)); }
@@ -3158,7 +3341,7 @@ const Scenes = (function () {
       <div class="survey-cta" id="svCta"><p><b>Spieltest:</b> 8 Kurzfragen zu dieser Partie, etwa 1 Minute.</p><button class="btn primary" id="svOpen">Kurzfragen beantworten</button></div>
       <div class="start-actions"><button class="btn" id="again">Neue Partie</button><button class="btn" id="copyStory">Legende kopieren</button><button class="icon-btn" id="look">Karte noch ansehen</button></div><p class="muted" id="copyMsg" aria-live="polite"></p>`, 'Spielende', o.win ? '' : 'blood');
     $('again').addEventListener('click', () => { closeModal(); busy = false; s = null; $('game').hidden = true; $('start').hidden = false; renderStart(); window.scrollTo(0, 0); });
-    $('look').addEventListener('click', () => { closeModal(); busy = true; render(); });
+    $('look').addEventListener('click', () => { closeModal(); busy = true; $('tabbar').hidden = false; render(); });
     const answered = () => { const r = loadTests().find(x => x.gid === gid); return r && r.survey; };
     if (answered()) $('svCta').hidden = true;
     $('svOpen').addEventListener('click', () => openSurvey(gid, () => { openGameOver(); }));
@@ -3196,6 +3379,7 @@ const Scenes = (function () {
     const x = Math.floor((e.clientX - r.left) / r.width * 9), y = Math.floor((e.clientY - r.top) / r.height * 9);
     if (x < 0 || y < 0 || x > 8 || y > 8) return;
     sel = { x, y }; drawMap(); renderTile();
+    if (mobile()) { const ti = $('tileInfo').getBoundingClientRect(); if (ti.top > window.innerHeight - 170) $('tileInfo').scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' }); }
   });
   $('map').addEventListener('keydown', e => {
     if (!s || !sel) return; const d = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }[e.key];
