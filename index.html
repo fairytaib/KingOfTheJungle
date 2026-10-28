@@ -295,6 +295,59 @@ button, input { font: inherit; color: inherit; }
 .test-box summary { font-weight: 600; }
 @media (max-width: 520px) { .test-dl { grid-template-columns: 1fr; } .test-dl dd { margin-bottom: 6px; } }
 @media (prefers-reduced-motion: reduce) { .toast { animation: none; } }
+.play-row { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: stretch; }
+.play-row .btn { width: 100%; }
+.next-row .play-row .btn.primary, .next-row .play-row #btnAuto { font-size: 17px; padding-block: 14px; }
+#btnAuto.running { background: #2a2226; border-color: var(--ember); color: var(--ember-hi); }
+.tempo select { height: 100%; background: var(--panel2); color: var(--ink); border: 1px solid var(--line); padding: 0 8px; font: inherit; font-size: 15px; min-height: 46px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.stg { font-size: 12px; color: var(--ember-hi); }
+.stg.s2 { color: #ffd34d; text-shadow: 0 0 6px rgba(255, 211, 77, .5); }
+.destiny-chip .leg { font-size: 12px; color: var(--muted); border: 1px solid var(--line); padding: 0 5px; }
+.destiny-chip .leg.on { color: #ffd34d; border-color: #8a6a1e; }
+.form-n { color: var(--ember-hi); font-weight: 600; }
+.form-tag { font-size: 12px; border: 1px solid var(--line); padding: 0 5px; color: #d6a8ea; }
+.form-tag.s2 { color: #ffd34d; border-color: #8a6a1e; }
+.evo-bar { height: 7px; background: var(--panel2); border: 1px solid var(--line); }
+.evo-bar i { display: block; height: 100%; background: linear-gradient(90deg, #b46ad0, var(--ember-hi)); }
+.evo-t { font-size: 14px; color: #d6ccba; margin: 0; }
+.evo-sect .lbl { color: #d6a8ea; }
+.tile-act { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 2px; }
+.roster-help { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
+.roster-item { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; border-bottom: 1px solid #1f1b21; padding-bottom: 6px; }
+.roster-item.fav { background: rgba(211, 154, 69, .06); }
+.roster-acts { display: flex; gap: 6px; padding-left: 42px; }
+.roster-item .roster-row { grid-template-columns: 34px minmax(0, 1fr); }
+.roster-item .roster-row > small:last-child { grid-column: 2; }
+.destiny-chip .leg { white-space: nowrap; }
+.mini { font: inherit; font-size: 13px; background: var(--panel2); color: var(--ink); border: 1px solid var(--line); padding: 4px 8px; cursor: pointer; min-height: 32px; }
+.mini:hover:not(:disabled) { border-color: var(--ember); }
+.mini:disabled { opacity: .4; cursor: not-allowed; }
+.mini.star[aria-pressed="true"] { color: var(--ember-hi); border-color: var(--ember); }
+.sheet.evo { border-color: #b46ad0; }
+.evo-show { display: flex; align-items: center; justify-content: center; gap: 14px; background: #08070a; border: 1px solid #221e24; padding: 12px; }
+.evo-arrow { font-family: var(--f-num); font-size: 34px; color: #d6a8ea; }
+.evo-names { font-size: 18px; text-align: center; } .evo-names span { color: var(--muted); } .evo-names b { color: #ffd34d; }
+.abil-box { background: var(--panel2); border-left: 3px solid #b46ad0; padding: 8px 10px; font-size: 15px; display: grid; gap: 2px; }
+.origin { font-size: 14px; color: #b9ae9c; font-style: italic; text-align: center; }
+.warn-chip { border-color: #8b6a2a !important; color: #e0b86a; }
+.toast.evo { border-left-color: #b46ad0; }
+.cx-branch { border-left: 2px solid var(--line); padding-left: 10px; margin: 8px 0; }
+.cx-branch p { margin: 0 0 4px; } .cx-branch ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+@media (max-width: 899px) {
+  .play-row { grid-template-columns: minmax(0, 1fr) auto auto; gap: 6px; }
+  .tempo select { max-width: 98px; padding: 0 4px; }
+  .next-row .play-row #btnAuto { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .next-row .play-row #btnAuto { font-size: 18px; min-height: 52px; padding-block: 10px; white-space: nowrap; }
+  .next-row .play-row #btnNext { min-height: 52px; font-size: 15px; padding: 8px 12px; white-space: nowrap; }
+  .tempo select { min-height: 52px; font-size: 15px; }
+  body #game { padding-bottom: calc(170px + env(safe-area-inset-bottom, 0px)); }
+  .next-row #nextHint { display: block; font-size: 13px; margin-top: 4px; text-align: center; }
+  .mini { min-height: 40px; font-size: 14px; padding: 6px 10px; }
+  .roster-item { grid-template-columns: 1fr; padding-bottom: 6px; }
+  .roster-acts { padding-left: 40px; }
+  .evo-t { font-size: 15px; }
+}
 .linkish { background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; padding: 4px 0; font-size: 13px; }
 .ev-head { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; align-items: center; }
 .steps { display: flex; gap: 10px; font-family: var(--f-num); font-size: 17px; color: var(--muted); }
@@ -546,8 +599,12 @@ button, input { font: inherit; color: inherit; }
       <div class="col">
         <div class="panel main-card" id="mainCard" data-pane="alpha"></div>
         <div class="next-row">
-          <button class="btn primary" id="btnNext">Nächste Runde</button>
-          <p class="hint">Taste N</p>
+          <div class="play-row">
+            <button class="btn primary" id="btnAuto" type="button" aria-pressed="false">▶ Welt laufen lassen</button>
+            <button class="btn" id="btnNext" type="button">1 Runde</button>
+            <label class="tempo"><span class="sr">Tempo</span><select id="tempoSel" aria-label="Tempo"><option value="langsam">Langsam</option><option value="normal">Normal</option><option value="schnell">Schnell</option></select></label>
+          </div>
+          <p class="hint" id="nextHint">Taste N</p>
         </div>
         <div class="panel calls" id="calls" data-pane="pack"></div>
         <div class="panel" data-pane="log"><h3>Chronik</h3><ol class="log" id="log"></ol></div>
@@ -737,7 +794,208 @@ const Game = (function () {
   const clsKey = (s, u) => s.species[u.sp].cls;
   const clsOf = (s, u) => CLASSES[clsKey(s, u)];
   const has = (u, t) => u.traits.includes(t);
-  const nm = (s, u) => u.sp === 0 ? u.name : `${s.species[u.sp].name} ${u.name}`;
+  /* ---------- Entwicklungen ----------
+     Jede Art: 2 Klassen (Stufe 1, ab Lv 5), jede Klasse 2 Legendenformen (Stufe 2, ab Lv 5 in der Klasse und ab Runde 25).
+     w = Gewichte für den Weg (Werte, Charakter b, Taten k), c/f/sz = Aussehen, ab = Fähigkeit. */
+  const EVO_ROUND2 = 25;
+  const ABIL = {
+    nebelschleier: { name: 'Nebelschleier', desc: '+3 auf Flucht. Im Dschungel nach jeder Bewegung verborgen.', fx: { flee: 3, hide: 'dschungel' } },
+    irrlicht: { name: 'Irrlicht', desc: 'Fremde Tiere neben ihm laufen oft in eine zufällige Richtung.', fx: { irrlicht: 1 } },
+    diebesgriff: { name: 'Diebesgriff', desc: 'Stiehlt bei Begegnungen mit Fremden Futter (+20 % Sättigung).', fx: { steal: 1 } },
+    steinwurf: { name: 'Steinwurf', desc: 'Erster Angriff jedes Kampfes +2 und +1 Schaden.', fx: { first: 2, firstDmg: 1 } },
+    schneesturm: { name: 'Schneesturm', desc: 'Immun gegen Kälte. Im Schnee und Gebirge +2 Angriff.', fx: { coldImmune: 1, atkBiome: ['schnee', 'berg'] } },
+    wurzelgriff: { name: 'Wurzelgriff', desc: 'Gegner im Kampf mit ihm können nicht fliehen.', fx: { hold: 1 } },
+    stachelschweif: { name: 'Stachelschweif', desc: 'Der erste Treffer jedes Kampfes vergiftet (Tiefe Wunde).', fx: { poisonFirst: 1 } },
+    stachelhagel: { name: 'Stachelhagel', desc: 'Trifft einmal pro Kampf zusätzlich alle Gegner auf dem Feld.', fx: { aoe: 'once' } },
+    feueratem: { name: 'Feueratem', desc: 'Greift jede Runde zweimal an.', fx: { double: 1 } },
+    lautlos: { name: 'Lautlos', desc: 'Nachts nach jeder Bewegung verborgen.', fx: { hide: 'nacht' } },
+    unheilsruf: { name: 'Unheilsruf', desc: 'Nachts −2 auf Angriff und Proben für Fremde im Umkreis von 1 Feld.', fx: { curseAura: 1 } },
+    zweitegestalt: { name: 'Zweite Gestalt', desc: 'Nachts +2 Angriff und +1 Schaden, tagsüber +2 auf WE-Proben.', fx: { wertiger: 1 } },
+    mondgeheul: { name: 'Mondgeheul', desc: 'Nachts +1 auf Angriff und Proben für die eigene Art im Umkreis von 2 Feldern.', fx: { moonHowl: 1 } },
+    vollmond: { name: 'Vollmond', desc: 'Jede 4. Nacht +2 Angriff und +2 Schaden. Greift dann jedes fremde Tier an.', fx: { werMoon: 1 } },
+    nachtbegleiter: { name: 'Nachtbegleiter', desc: 'Wer vor ihm flieht, hat −4 auf die Flucht.', fx: { pursuer: 4 } },
+    rudelschatten: { name: 'Rudelschatten', desc: 'Erster Angriff jedes Kampfes +2.', fx: { first: 2 } },
+    hetzmeute: { name: 'Hetzmeute', desc: '+1 Angriff für jeden Artgenossen mit Hetzmeute in der Nähe, ohne Obergrenze.', fx: { pack: 1 } },
+    todesomen: { name: 'Todesomen', desc: 'Wer gegen ihn kämpft, hat −2 auf Angriffe.', fx: { fearAura: 2 } },
+    ahnengedaechtnis: { name: 'Ahnengedächtnis', desc: 'Die ganze Art erinnert Felder doppelt so lange.', fx: { mem: 1 } },
+    traumfresser: { name: 'Traumfresser', desc: 'Heilt Krankheit, Fluch und Tiefe Wunden aller eigenen Tiere auf seinem Feld.', fx: { cureAura: 1 } },
+    rufderahnen: { name: 'Ruf der Ahnen', desc: 'Stirbt ein Tier der eigenen Art, erhalten alle anderen EP (2 je Level des Toten).', fx: { xpShare: 1 } },
+    trampeln: { name: 'Trampeln', desc: 'Jeder Angriff trifft zusätzlich alle Gegner auf dem Feld.', fx: { aoe: 'each' } },
+    erdbeben: { name: 'Erdbeben', desc: 'Zu Beginn jedes Kampfes erstarren alle Gegner auf dem Feld für einen Schlagabtausch.', fx: { quake: 1 } },
+    wollkleid: { name: 'Dickes Wollkleid', desc: 'Immun gegen Kälte, im Winter kein zusätzlicher Hunger.', fx: { coldImmune: 1, winterFood: 1 } },
+    schuppenpanzer: { name: 'Schuppenpanzer', desc: '−1 Schaden pro Treffer.', fx: { dr: 1 } },
+    panzerkoloss: { name: 'Panzerkoloss', desc: 'Halbiert jeden Schaden.', fx: { half: 'all' } },
+    giftatem: { name: 'Giftatem', desc: 'Jeder Treffer vergiftet zu 50 %.', fx: { poison: .5 } },
+    lauern: { name: 'Lauern', desc: 'Aus dem Wasser heraus: erster Treffer mit doppeltem Schaden.', fx: { waterAtk: 1 } },
+    felssprung: { name: 'Felssprung', desc: 'Lauert auch an Land und zieht 1 Feld weiter.', fx: { lurkLand: 1, steps: 1 } },
+    flutwelle: { name: 'Flutwelle', desc: 'Am und im Wasser +2 Angriff. Fluten schaden ihm nicht.', fx: { atkWater: 2, floodImmune: 1 } },
+    rammstoss: { name: 'Rammstoß', desc: 'Ein Treffer wirft den Gegner zu 30 % aufs Nachbarfeld und beendet den Kampf.', fx: { ramm: .3 } },
+    blitzsprung: { name: 'Blitzsprung', desc: 'Zieht 2 Felder weiter. Erster Angriff betäubt zu 50 %.', fx: { steps: 2, stunFirst: .5 } },
+    goldenesvlies: { name: 'Goldenes Vlies', desc: 'Eigene Tiere auf seinem Feld heilen 2 LP pro Runde.', fx: { healAura: 2 } },
+    gratwandler: { name: 'Gratwandler', desc: 'Im Gebirge nach jeder Bewegung verborgen, +3 auf Flucht im Gebirge.', fx: { hide: 'berg', fleeBerg: 3 } },
+    schreckensgestalt: { name: 'Schreckensgestalt', desc: 'Jungtiere und Tiere niedrigeren Levels greifen ihn nicht an.', fx: { fear: 1 } },
+    rosenblut: { name: 'Rosenblut', desc: 'Überlebt einmal im Leben einen tödlichen Treffer mit 1 LP.', fx: { revive: 'one' } },
+    gleitflug: { name: 'Gleitflug', desc: 'Zieht 1 Feld weiter.', fx: { steps: 1 } },
+    adlerblick: { name: 'Adlerblick', desc: '+1 Sichtweite und zieht 1 weiteres Feld.', fx: { sight: 1, steps: 1 } },
+    raetsel: { name: 'Rätsel', desc: 'Zu Beginn jedes Kampfes: Der Gegner muss eine WE-Probe gegen 13 bestehen, sonst erstarrt er.', fx: { gaze: 13 } },
+    koenigsmaehne: { name: 'Königsmähne', desc: '−1 Schaden, im eigenen Revier +1 Angriff.', fx: { dr: 1, atkTerr: 1 } },
+    goldenesfell: { name: 'Goldenes Fell', desc: 'Nicht-kritische Treffer richten nur halben Schaden an.', fx: { half: 'noncrit' } },
+    waechterpaar: { name: 'Wächterpaar', desc: 'Reviere der eigenen Art im Umkreis von 1 Feld können nicht erobert werden.', fx: { guard: 1 } },
+    starkesgift: { name: 'Starkes Gift', desc: 'Jeder Treffer vergiftet zu 70 %.', fx: { poison: .7 } },
+    todesblick: { name: 'Todesblick', desc: 'Zu Beginn jedes Kampfes: Der Gegner muss eine WE-Probe gegen 14 bestehen, sonst erstarrt er.', fx: { gaze: 14 } },
+    zweikoepfe: { name: 'Zwei Köpfe', desc: 'Beißt jede Runde zweimal. Gegner erhalten keinen Bonus für den ersten Schlag.', fx: { double: 1, noSurprise: 1 } },
+    umschlingen: { name: 'Umschlingen', desc: 'Gegner im Kampf mit ihm können nicht fliehen.', fx: { hold: 1 } },
+    nachwachsend: { name: 'Nachwachsende Köpfe', desc: 'Steht nach dem Tod einmal mit halben LP wieder auf.', fx: { revive: 'half' } },
+    feuerleib: { name: 'Feuerleib', desc: 'Immun gegen Feuer. Wer sie trifft, verbrennt sich (2 Schaden).', fx: { burn: 2, fireImmune: 1 } },
+    grosseransturm: { name: 'Großer Ansturm', desc: 'Erster Angriff jedes Kampfes +2 zusätzlich.', fx: { first: 2 } },
+    unaufhaltsam: { name: 'Unaufhaltsam', desc: 'Trifft einmal pro Kampf zusätzlich alle Gegner auf dem Feld.', fx: { aoe: 'once' } },
+    reineshorn: { name: 'Reines Horn', desc: 'Heilt Krankheit, Fluch und Tiefe Wunden aller eigenen Tiere auf seinem Feld.', fx: { cureAura: 1 } },
+    bollwerk: { name: 'Bollwerk', desc: '−2 Schaden pro Treffer.', fx: { dr: 2 } },
+    brennenderrueckzug: { name: 'Brennender Rückzug', desc: 'Seine Flucht gelingt immer.', fx: { fleeAlways: 1 } },
+    schwererblick: { name: 'Schwerer Blick', desc: 'Zu Beginn jedes Kampfes erstarrt der Gegner für einen Schlagabtausch.', fx: { stare: 1 } },
+    prankenhieb: { name: 'Prankenhieb', desc: 'Treffer verursachen zu 30 % eine Tiefe Wunde.', fx: { wound: .3 } },
+    kampfrausch: { name: 'Kampfrausch', desc: 'Unter 30 % LP doppelter Schaden. Flieht nie.', fx: { rage: 1 } },
+    ausdemdunkel: { name: 'Aus dem Dunkel', desc: 'Nachts erster Treffer mit doppeltem Schaden.', fx: { nightFirst: 1 } },
+    winterruhe: { name: 'Winterruhe', desc: 'Rastet er in einer Höhle, verliert er keine Sättigung.', fx: { caveRest: 1 } },
+    wurzelnschlagen: { name: 'Wurzeln schlagen', desc: 'Wo er rastet, wächst Futter nach und das Feld verödet nicht.', fx: { roots: 1 } },
+    sporenwolke: { name: 'Sporenwolke', desc: 'Gegner, die er trifft, erkranken zu 50 %.', fx: { spores: .5 } }
+  };
+  const EVO = {
+    affe: [
+      { id: 'nebelaffe', n: 'Nebelaffe', c: '#6d6a7a', a: '#a9a6d8', f: { speckle: '#a9a6b8', glow: '#bfe3ff' }, w: { ge: 1 }, b: ['scheu', 'neugierig'], way: 'hohe GE, scheu oder neugierig', ab: 'nebelschleier',
+        fin: [
+          { id: 'irrlichtaffe', n: 'Irrlichtaffe', o: 'Irrlichter aus europäischen Moorsagen', r: 'Täuscher', c: '#4a4a66', a: '#9ff0ff', f: { glow: '#9ff0ff', aura: '#2f6f8a', flame: ['#9ff0ff', '#4fc3d8'], speckle: '#7a7ab0' }, w: { we: 1 }, b: ['scheu'], way: 'hohe WE, scheu', ab: 'irrlicht' },
+          { id: 'koboldaffe', n: 'Kobold-Affe', o: 'Kobolde der deutschen Sagenwelt', r: 'Dieb', c: '#5d6b3a', a: '#f2c94c', f: { horns: '#3d4527', glow: '#f2c94c', stripes: '#46522a' }, w: { ge: 1 }, b: ['gefraessig', 'neugierig'], way: 'hohe GE, gefräßig oder neugierig', ab: 'diebesgriff' }
+        ] },
+      { id: 'felsaffe', n: 'Felsaffe', c: '#7b7268', a: '#b8ab90', f: { plates: '#5d564e' }, w: { st: 1 }, b: ['aggressiv', 'territorial'], k: { fights: .3 }, way: 'hohe ST, viele Kämpfe', ab: 'steinwurf',
+        fin: [
+          { id: 'yeti', n: 'Yeti', o: 'Der Schneemensch aus Sagen des Himalaya', r: 'Bergwächter', c: '#d9dde0', a: '#7fd0ff', sz: 1.15, f: { speckle: '#b4c4cf', glow: '#2a8fd0', mane: '#c4ccd2' }, w: { ko: 1 }, k: { cold: .4 }, way: 'hohe KO, viel Zeit in Schnee und Bergen', ab: 'schneesturm' },
+          { id: 'waldschrat', n: 'Waldschrat', o: 'Schrate, haarige Waldgeister der Alpensagen', r: 'Hüter', c: '#4f5b33', a: '#9fbf5a', sz: 1.1, f: { speckle: '#7d8f4c', mane: '#3a2f1e', glow: '#e6ff5a' }, w: { st: 1 }, b: ['territorial'], k: { jungle: .4 }, way: 'hohe ST, viel Zeit im Dschungel', ab: 'wurzelgriff' }
+        ] }
+    ],
+    tiger: [
+      { id: 'stacheltiger', n: 'Stacheltiger', c: '#b0702e', a: '#e8d9b8', f: { spikes: '#e8d9b8', sting: '#e8d9b8' }, w: { st: 1 }, b: ['aggressiv'], k: { kills: .5 }, way: 'hohe ST, aggressiv', ab: 'stachelschweif',
+        fin: [
+          { id: 'mantikor', n: 'Mantikor', o: 'Aus persischen Sagen: Löwenleib, Menschenmaul, Skorpionschweif', r: 'Schlächter', c: '#a3402e', a: '#ffcf5c', sz: 1.15, f: { sting: '#2a1a14', mane: '#6b2a1c', spikes: '#e8d9b8', glow: '#ffcf5c' }, w: { st: 1 }, k: { kills: .6 }, way: 'hohe ST, viele Tötungen', ab: 'stachelhagel' },
+          { id: 'chimaere', n: 'Chimäre', o: 'Aus der griechischen Sage: Löwe, Ziege und Schlange in einem', r: 'Zerstörer', c: '#b5652a', a: '#ff6a3d', sz: 1.15, f: { horns: '#d9cfb8', flame: ['#ffb347', '#e0442a'], heads: 2, glow: '#ff6a3d' }, w: { ko: 1 }, b: ['aggressiv', 'territorial'], way: 'hohe KO, aggressiv oder territorial', ab: 'feueratem' }
+        ] },
+      { id: 'schattentiger', n: 'Schattentiger', c: '#3d3550', a: '#c9a3ff', f: { stripes: '#1c1726', glow: '#c9a3ff' }, w: { ge: 1 }, b: ['scheu', 'neugierig'], k: { nights: .2 }, way: 'hohe GE, viele Nächte draußen', ab: 'lautlos',
+        fin: [
+          { id: 'nue', n: 'Nue', o: 'Unheilsbote aus japanischen Sagen, mit Tigerbeinen und Schlangenschwanz', r: 'Fluchbringer', c: '#2c2a3d', a: '#e05aff', sz: 1.1, f: { stripes: '#5b3f7a', sting: '#4e6b45', glow: '#e05aff', aura: '#3a1f55' }, w: { we: 1 }, k: { nights: .2 }, way: 'hohe WE, viele Nächte draußen', ab: 'unheilsruf' },
+          { id: 'wertiger', n: 'Wertiger', o: 'Gestaltwandler aus Sagen Südostasiens', r: 'Doppelwesen', c: '#8a5a2e', a: '#ffd34d', sz: 1.15, f: { stripes: '#2a1a10', glow: '#ffd34d', mane: '#5a3a1e' }, w: { st: .6, ge: .6 }, b: ['aggressiv', 'gefraessig'], way: 'ausgewogen stark, aggressiv oder gefräßig', ab: 'zweitegestalt' }
+        ] }
+    ],
+    wolf: [
+      { id: 'mondwolf', n: 'Mondwolf', c: '#a6acc0', a: '#d0d6e6', f: { glow: '#e6f0ff', speckle: '#d0d6e6' }, w: { we: 1 }, b: ['gesellig', 'neugierig'], way: 'hohe WE, gesellig', ab: 'mondgeheul',
+        fin: [
+          { id: 'werwolf', n: 'Werwolf', o: 'Werwolf-Sagen aus ganz Europa', r: 'Raserei', c: '#5a4e48', a: '#ffdd55', sz: 1.2, f: { mane: '#3a302c', glow: '#ffdd55', spikes: '#3a302c' }, w: { st: 1 }, b: ['aggressiv'], k: { kills: .4 }, way: 'hohe ST, aggressiv', ab: 'vollmond' },
+          { id: 'okuriinu', n: 'Okuri-Inu', o: 'Aus japanischen Sagen: ein Wolf, der Wanderern nachts folgt', r: 'Verfolger', c: '#d8d2c4', a: '#ff5a5a', sz: 1.05, f: { glow: '#ff5a5a', aura: '#4a2020', stripes: '#bdb6a6' }, w: { ge: 1 }, k: { nights: .2 }, way: 'hohe GE, viele Nächte draußen', ab: 'nachtbegleiter' }
+        ] },
+      { id: 'schattenwolf', n: 'Schattenwolf', c: '#3e3a40', a: '#ff9a3d', f: { glow: '#ff9a3d' }, w: { st: 1 }, b: ['aggressiv', 'territorial'], k: { fights: .3 }, way: 'hohe ST, viele Kämpfe', ab: 'rudelschatten',
+        fin: [
+          { id: 'warg', n: 'Warg', o: 'Riesenwölfe aus nordischen Sagen', r: 'Meute', c: '#4a4038', a: '#ffb13d', sz: 1.25, f: { spikes: '#2a231e', glow: '#ffb13d', mane: '#2e2620' }, w: { ko: 1 }, b: ['gesellig', 'territorial'], way: 'hohe KO, gesellig oder territorial', ab: 'hetzmeute' },
+          { id: 'grimm', n: 'Grimm', o: 'Kirchengrimm und Black Shuck, schwarze Geisterhunde englischer Sagen', r: 'Todesbote', c: '#1a181c', a: '#ff3b2f', sz: 1.15, f: { glow: '#ff3b2f', aura: '#6a1a14', flame: ['#ff3b2f', '#7a1a10'] }, w: { we: 1 }, b: ['scheu', 'aggressiv'], k: { kills: .3 }, way: 'hohe WE, viele Tötungen', ab: 'todesomen' }
+        ] }
+    ],
+    elefant: [
+      { id: 'traumelefant', n: 'Traumelefant', c: '#7a7590', a: '#a7a3c4', f: { speckle: '#a7a3c4', glow: '#cfe0ff' }, w: { we: 1 }, b: ['gesellig', 'scheu', 'neugierig'], way: 'hohe WE, friedlicher Charakter', ab: 'ahnengedaechtnis',
+        fin: [
+          { id: 'baku', n: 'Baku', o: 'Der Traumfresser aus japanischen Sagen', r: 'Heiler', c: '#4c5a78', a: '#9fe0ff', sz: 1.1, f: { speckle: '#d9cfe8', glow: '#9fe0ff', aura: '#2a3a5a' }, w: { we: 1 }, b: ['gesellig'], way: 'hohe WE, gesellig', ab: 'traumfresser' },
+          { id: 'geisterelefant', n: 'Geisterelefant', o: 'Die Sage vom Elefantenfriedhof, zu dem alte Tiere zum Sterben ziehen', r: 'Ahnenwächter', c: '#c9c6bd', a: '#bfffe0', sz: 1.1, f: { glow: '#bfffe0', aura: '#3a5a4a', speckle: '#9fb8a8' }, w: { ko: 1 }, k: { children: .5 }, way: 'hohe KO, viele Nachkommen', ab: 'rufderahnen' }
+        ] },
+      { id: 'kriegselefant', n: 'Kriegselefant', c: '#6b5f55', a: '#d0a050', f: { plates: '#a07a3a' }, w: { st: .7, ko: .7 }, b: ['territorial', 'aggressiv'], k: { fights: .3 }, way: 'hohe ST oder KO, territorial', ab: 'trampeln',
+        fin: [
+          { id: 'erdkoloss', n: 'Erdkoloss', o: 'Fantasie: ein wandelnder Berg', r: 'Bollwerk', c: '#5c5a52', a: '#c8b890', sz: 1.3, f: { plates: '#3d3b36', spikes: '#7a7468' }, w: { st: 1 }, k: { fights: .3 }, way: 'hohe ST, viele Kämpfe', ab: 'erdbeben' },
+          { id: 'wollriese', n: 'Wollriese', o: 'Die Mammuts der Eiszeit-Legenden', r: 'Überlebender', c: '#7a4e2e', a: '#e8c8a0', sz: 1.3, f: { mane: '#5a3620', speckle: '#9a6a40' }, w: { ko: 1 }, k: { cold: .4 }, way: 'hohe KO, viel Zeit in Schnee und Bergen', ab: 'wollkleid' }
+        ] }
+    ],
+    krokodil: [
+      { id: 'panzerechse', n: 'Panzerechse', c: '#5a6b4a', a: '#9fb07a', f: { plates: '#3a4a30' }, w: { ko: 1 }, b: ['territorial', 'gefraessig'], way: 'hohe KO', ab: 'schuppenpanzer',
+        fin: [
+          { id: 'tarasque', n: 'Tarasque', o: 'Aus südfranzösischen Sagen: ein Drache mit Schildkrötenpanzer', r: 'Festung', c: '#5a5a3a', a: '#d9c8a0', sz: 1.2, f: { spikes: '#d9c8a0', plates: '#3a3a24', glow: '#ffcf5c' }, w: { ko: 1 }, b: ['territorial'], way: 'hohe KO, territorial', ab: 'panzerkoloss' },
+          { id: 'lindwurm', n: 'Lindwurm', o: 'Der Lindwurm deutscher Sagen', r: 'Verderber', c: '#3d6b3a', a: '#e6ff5a', sz: 1.2, f: { wings: '#2a4a28', spikes: '#9fd06a', glow: '#e6ff5a' }, w: { st: 1 }, b: ['aggressiv'], k: { kills: .4 }, way: 'hohe ST, aggressiv', ab: 'giftatem' }
+        ] },
+      { id: 'lauerechse', n: 'Lauerechse', c: '#3d5a52', a: '#7fb0a0', f: { stripes: '#2a403a', glow: '#e6ff5a' }, w: { ge: 1 }, k: { water: .3 }, way: 'hohe GE, viel Zeit im Wasser', ab: 'lauern',
+        fin: [
+          { id: 'tatzelwurm', n: 'Tatzelwurm', o: 'Aus Alpensagen: eine Echse mit Katzenkopf', r: 'Springer', c: '#8a7a5a', a: '#ffb13d', sz: 1.1, f: { horns: '#5a4a30', glow: '#ffb13d', stripes: '#6a5a3e' }, w: { ge: 1 }, b: ['neugierig'], way: 'hohe GE, neugierig', ab: 'felssprung' },
+          { id: 'flussdrache', n: 'Flussdrache', o: 'Fantasie: ein Drache der großen Ströme', r: 'Flutbringer', c: '#2f5a7a', a: '#9ff0ff', sz: 1.25, f: { spikes: '#8fd0e0', horns: '#c8e8f0', glow: '#9ff0ff' }, w: { we: 1 }, k: { water: .3 }, way: 'hohe WE, viel Zeit im Wasser', ab: 'flutwelle' }
+        ] }
+    ],
+    steinbock: [
+      { id: 'donnerbock', n: 'Donnerbock', c: '#8a7050', a: '#e8dcc0', f: { horns: '#e8dcc0' }, w: { st: 1 }, b: ['aggressiv', 'territorial'], k: { fights: .3 }, way: 'hohe ST, viele Kämpfe', ab: 'rammstoss',
+        fin: [
+          { id: 'sturmwidder', n: 'Sturmwidder', o: 'Fantasie: ein Widder, der mit dem Gewitter kommt', r: 'Stürmer', c: '#5a6070', a: '#ffe45a', sz: 1.15, f: { horns: '#ffe45a', glow: '#bfe8ff', flame: ['#ffe45a', '#a0c8ff'] }, w: { ge: 1 }, b: ['aggressiv', 'neugierig'], way: 'hohe GE, aggressiv oder neugierig', ab: 'blitzsprung' },
+          { id: 'goldwidder', n: 'Goldwidder', o: 'Der goldene Widder aus der Sage vom Goldenen Vlies', r: 'Segensträger', c: '#d9a840', a: '#ffe08a', sz: 1.1, f: { speckle: '#ffe08a', horns: '#fff0c0', aura: '#6a4a10' }, w: { we: 1 }, b: ['gesellig', 'territorial'], k: { children: .5 }, way: 'hohe WE, viele Nachkommen', ab: 'goldenesvlies' }
+        ] },
+      { id: 'nachtbock', n: 'Nachtbock', c: '#4a4250', a: '#a090b0', f: { horns: '#2a242e', glow: '#d0c0ff' }, w: { we: 1 }, b: ['scheu', 'neugierig'], way: 'hohe WE, scheu', ab: 'gratwandler',
+        fin: [
+          { id: 'krampus', n: 'Krampus', o: 'Die Schreckgestalt alpenländischer Sagen', r: 'Schreckgestalt', c: '#3a1f1a', a: '#ff3b2f', sz: 1.2, f: { mane: '#1a0f0c', horns: '#c8b8a0', glow: '#ff3b2f' }, w: { st: 1 }, b: ['aggressiv', 'territorial'], way: 'hohe ST, aggressiv oder territorial', ab: 'schreckensgestalt' },
+          { id: 'zlatorog', n: 'Zlatorog', o: 'Der weiße Gamsbock mit goldenen Hörnern aus slowenischen Sagen', r: 'Unsterblicher', c: '#e8e4dc', a: '#ff8ab0', sz: 1.1, f: { horns: '#e8b840', glow: '#ff8ab0', aura: '#5a3a4a' }, w: { ko: 1 }, b: ['scheu'], way: 'hohe KO, scheu', ab: 'rosenblut' }
+        ] }
+    ],
+    loewe: [
+      { id: 'schwingenloewe', n: 'Schwingenlöwe', c: '#c8913f', a: '#e8d0a0', f: { wings: '#e8d0a0' }, w: { ge: 1 }, b: ['neugierig', 'scheu'], way: 'hohe GE', ab: 'gleitflug',
+        fin: [
+          { id: 'greif', n: 'Greif', o: 'Der Greif der Sagen: Löwenleib, Adlerkopf und Schwingen', r: 'Himmelsjäger', c: '#b8873a', a: '#ffcf5c', sz: 1.2, f: { wings: '#f0e6d0', mane: '#f0e6d0', glow: '#ffcf5c' }, w: { ge: 1 }, b: ['aggressiv', 'neugierig'], way: 'hohe GE, aggressiv oder neugierig', ab: 'adlerblick' },
+          { id: 'sphinx', n: 'Sphinx', o: 'Die Sphinx der griechischen Sage, die Wanderern Rätsel stellt', r: 'Rätselwächterin', c: '#d9b56a', a: '#7fe0ff', sz: 1.15, f: { wings: '#a07a3a', mane: '#3a5a8a', glow: '#7fe0ff' }, w: { we: 1 }, way: 'hohe WE', ab: 'raetsel' }
+        ] },
+      { id: 'panzerloewe', n: 'Panzerlöwe', c: '#c0873a', a: '#d0a060', f: { mane: '#7a4a1e', plates: '#a87030' }, w: { st: .7, ko: .7 }, b: ['territorial', 'aggressiv'], way: 'hohe ST oder KO, territorial', ab: 'koenigsmaehne',
+        fin: [
+          { id: 'nemeischerloewe', n: 'Nemeischer Löwe', o: 'Aus der griechischen Sage: kein Speer durchdrang sein Fell', r: 'Unverwundbarer', c: '#e0b04a', a: '#ffe08a', sz: 1.25, f: { mane: '#b8782a', speckle: '#ffe08a', aura: '#6a4a10' }, w: { ko: 1 }, k: { kills: .4 }, way: 'hohe KO, viele Tötungen', ab: 'goldenesfell' },
+          { id: 'shisa', n: 'Shisa', o: 'Die steinernen Löwenhunde Okinawas, die Häuser bewachen', r: 'Revierwächter', c: '#a87a5a', a: '#6ad0b8', sz: 1.15, f: { mane: '#3a7a6a', plates: '#8a5a3a', glow: '#ffcf5c' }, w: { we: 1 }, b: ['territorial', 'gesellig'], way: 'hohe WE, territorial oder gesellig', ab: 'waechterpaar' }
+        ] }
+    ],
+    schlange: [
+      { id: 'giftnatter', n: 'Giftnatter', c: '#8aa83a', a: '#e6ff5a', f: { stripes: '#2a3a14', glow: '#e6ff5a' }, w: { ge: 1 }, b: ['scheu', 'neugierig'], way: 'hohe GE', ab: 'starkesgift',
+        fin: [
+          { id: 'basilisk', n: 'Basilisk', o: 'Der König der Schlangen aus europäischen Sagen, tötet mit dem Blick', r: 'Lähmer', c: '#5a7a2a', a: '#ff3b2f', sz: 1.2, f: { horns: '#d0402a', mane: '#d0402a', glow: '#ff3b2f' }, w: { we: 1 }, k: { kills: .4 }, way: 'hohe WE, viele Tötungen', ab: 'todesblick' },
+          { id: 'amphisbaena', n: 'Amphisbaena', o: 'Die Schlange mit einem Kopf an jedem Ende', r: 'Wachsame', c: '#7a5a8a', a: '#ffcf5c', sz: 1.15, f: { tailhead: true, glow: '#ffcf5c', stripes: '#5a3e6a' }, w: { ge: 1 }, b: ['scheu', 'gesellig'], way: 'hohe GE, scheu oder gesellig', ab: 'zweikoepfe' }
+        ] },
+      { id: 'wuergeschlange', n: 'Würgeschlange', c: '#6a5a3a', a: '#c8a870', sz: 1.1, f: { stripes: '#3a2e1c' }, w: { st: .7, ko: .7 }, b: ['aggressiv', 'gefraessig'], way: 'hohe ST oder KO', ab: 'umschlingen',
+        fin: [
+          { id: 'hydra', n: 'Hydra', o: 'Die Hydra der griechischen Sage: für jeden Kopf wachsen zwei nach', r: 'Unsterbliche', c: '#3a6a5a', a: '#9fffd0', sz: 1.25, f: { heads: 3, glow: '#9fffd0' }, w: { ko: 1 }, k: { water: .3 }, way: 'hohe KO, viel Zeit im Wasser', ab: 'nachwachsend' },
+          { id: 'boitata', n: 'Boitatá', o: 'Die Feuerschlange brasilianischer Sagen, die Wälder vor Brandstiftern schützt', r: 'Flammenhüterin', c: '#c0502a', a: '#ffd25a', sz: 1.2, f: { speckle: '#ffb347', flame: ['#ffd25a', '#e0442a'], glow: '#fff0a0', aura: '#6a1a10' }, w: { st: 1 }, k: { jungle: .4 }, way: 'hohe ST, viel Zeit im Dschungel', ab: 'feuerleib' }
+        ] }
+    ],
+    nashorn: [
+      { id: 'stirnhorn', n: 'Stirnhorn', c: '#7a6e64', a: '#e8dcc0', f: { unihorn: '#e8dcc0' }, w: { st: 1 }, b: ['aggressiv'], k: { fights: .3 }, way: 'hohe ST, aggressiv', ab: 'grosseransturm',
+        fin: [
+          { id: 'karkadann', n: 'Karkadann', o: 'Das wilde Einhorn-Ungeheuer persischer Sagen', r: 'Durchbrecher', c: '#5a4a3a', a: '#ff6a3d', sz: 1.25, f: { unihorn: '#f0e0b0', mane: '#3a2e24', glow: '#ff6a3d' }, w: { st: 1 }, k: { kills: .4 }, way: 'hohe ST, viele Tötungen', ab: 'unaufhaltsam' },
+          { id: 'monoceros', n: 'Monoceros', o: 'Das Urbild des Einhorns aus mittelalterlichen Bestiarien', r: 'Reiniger', c: '#d8d4cc', a: '#9fe0ff', sz: 1.15, f: { unihorn: '#f0d080', mane: '#b8b0c8', glow: '#9fe0ff', aura: '#3a4a6a' }, w: { we: 1 }, b: ['gesellig', 'scheu'], way: 'hohe WE, gesellig oder scheu', ab: 'reineshorn' }
+        ] },
+      { id: 'panzernashorn', n: 'Panzernashorn', c: '#6a6a6a', a: '#a8a8a8', f: { plates: '#4a4a4a' }, w: { ko: 1 }, b: ['territorial', 'scheu'], way: 'hohe KO, territorial', ab: 'bollwerk',
+        fin: [
+          { id: 'bonnacon', n: 'Bonnacon', o: 'Aus mittelalterlichen Bestiarien: vertreibt Verfolger mit brennendem Dung', r: 'Unverfolgbar', c: '#8a5a3a', a: '#ffb347', sz: 1.2, f: { horns: '#d9c8a0', flame: ['#ffb347', '#a0401a'], glow: '#ffcf5c' }, w: { ge: 1 }, b: ['scheu', 'gefraessig'], way: 'hohe GE, scheu oder gefräßig', ab: 'brennenderrueckzug' },
+          { id: 'katoblepas', n: 'Katoblepas', o: 'Aus antiken Reiseberichten: sein Blick lässt erstarren', r: 'Versteinerer', c: '#4a4a3a', a: '#b0ff5a', sz: 1.25, f: { plates: '#2e2e24', mane: '#2a2a1e', glow: '#b0ff5a' }, w: { we: 1 }, b: ['territorial'], way: 'hohe WE, territorial', ab: 'schwererblick' }
+        ] }
+    ],
+    baer: [
+      { id: 'grimmbaer', n: 'Grimmbär', c: '#5a3a26', a: '#ffb13d', f: { glow: '#ffb13d' }, w: { st: 1 }, b: ['aggressiv', 'territorial'], k: { fights: .3 }, way: 'hohe ST, aggressiv', ab: 'prankenhieb',
+        fin: [
+          { id: 'berserkerbaer', n: 'Berserkerbär', o: 'Die Berserker nordischer Sagen, die im Bärenfell in Raserei kämpften', r: 'Raserei', c: '#6a2a1e', a: '#ff3b2f', sz: 1.2, f: { mane: '#3a160e', glow: '#ff3b2f', aura: '#5a1a10' }, w: { st: 1 }, b: ['aggressiv'], k: { kills: .4 }, way: 'hohe ST, aggressiv', ab: 'kampfrausch' },
+          { id: 'schreckbaer', n: 'Schreckbär', o: 'Der Bugbear englischer Sagen, ein Schreckgespenst im Dunkeln', r: 'Hinterhalt', c: '#2e2630', a: '#c9ff5a', sz: 1.15, f: { glow: '#c9ff5a', spikes: '#4a3a4e' }, w: { ge: 1 }, k: { nights: .2 }, way: 'hohe GE, viele Nächte draußen', ab: 'ausdemdunkel' }
+        ] },
+      { id: 'moosbaer', n: 'Moosbär', c: '#4a5a32', a: '#9fbf5a', f: { speckle: '#7d8f4c' }, w: { ko: .7, we: .7 }, b: ['gesellig', 'scheu', 'gefraessig'], way: 'hohe KO oder WE, friedlicher Charakter', ab: 'winterruhe',
+        fin: [
+          { id: 'moosriese', n: 'Moosriese', o: 'Fantasie: ein Bär, dem ein Wald auf dem Rücken wächst', r: 'Wanderwald', c: '#3a4a2a', a: '#8fbf5a', sz: 1.3, f: { trees: '#6a9a4a', speckle: '#8fbf5a' }, w: { ko: 1 }, b: ['gefraessig', 'territorial'], way: 'hohe KO, gefräßig oder territorial', ab: 'wurzelnschlagen' },
+          { id: 'sporenbaer', n: 'Sporenbär', o: 'Fantasie: ein Pilzwesen aus dem tiefen Wald', r: 'Seuchenträger', c: '#6a4a5a', a: '#e0b8d8', sz: 1.15, f: { shrooms: '#e0b8d8', speckle: '#d9a0c8', glow: '#ffe0f0' }, w: { we: 1 }, k: { jungle: .4 }, way: 'hohe WE, viel Zeit im Dschungel', ab: 'sporenwolke' }
+        ] }
+    ]
+  };
+  const FORMS = {};
+  for (const sp in EVO) EVO[sp].forEach(b => { FORMS[b.id] = Object.assign({ sp, stage: 1, parent: null }, b); b.fin.forEach(f => { FORMS[f.id] = Object.assign({ sp, stage: 2, parent: b.id }, f); }); });
+
+  const EV_EVERY = 5;
+  const formName = (s, u) => u.form && FORMS[u.form] ? FORMS[u.form].n : s.species[u.sp].name;
+  const nm = (s, u) => u.sp === 0 ? u.name : `${formName(s, u)} ${u.name}`;
+  const MAXK = { poison: 1, ramm: 1, stunFirst: 1, wound: 1, spores: 1 };
+  function AF(u, k) {
+    if (!u || !u.ab || !u.ab.length) return 0;
+    let v = 0;
+    for (const a of u.ab) { const x = ABIL[a] && ABIL[a].fx[k]; if (x === undefined || x === 0) continue; if (typeof x === 'number') v = MAXK[k] ? Math.max(v, x) : v + x; else v = x; }
+    return v;
+  }
+  const werNight = s => s.round % 2 === 0 && s.round % 8 === 0;
   const need = l => XP[l - 1];
   const seasonOf = r => SEASONS[Math.floor((r - 1) / SEASON_LEN) % 4];
   const season = s => seasonOf(s.round);
@@ -801,7 +1059,7 @@ const Game = (function () {
   }
   function newGame(playerCls, seed, name, beh) {
     seed = (seed === undefined || seed === null ? Math.floor(Math.random() * 2147483647) : seed) | 0;
-    const s = { v: 5, losses: [], rs: seed, seed, round: 1, tiles: [], units: [], eggs: [], species: [], nextId: 1, log: [], extraVis: {}, over: null, pending: null, fight: null, recent: {}, deaths: 0, births: 0, marks: {}, cata: null, cataLast: 0, chains: [], stash: null, moves: [], calls: {}, focus: {}, saga: [], ancestors: [], heirPick: null, boons: {}, boonPick: null, wild: [6, 6, 6, 6, 6, 6, 6, 6, 6], beastNext: 16, notes: {} };
+    const s = { v: 6, losses: [], evos: [], goal: null, fav: {}, lastEv: -9, mentorR: 0, memo: {}, rs: seed, seed, round: 1, tiles: [], units: [], eggs: [], species: [], nextId: 1, log: [], extraVis: {}, over: null, pending: null, fight: null, recent: {}, deaths: 0, births: 0, marks: {}, cata: null, cataLast: 0, chains: [], stash: null, moves: [], calls: {}, focus: {}, saga: [], ancestors: [], heirPick: null, boons: {}, boonPick: null, wild: [6, 6, 6, 6, 6, 6, 6, 6, 6], beastNext: 16, notes: {} };
     genMap(s);
     const others = Object.keys(CLASSES).filter(c => c !== playerCls && !CLASSES[c].legendary);
     let chosen;
@@ -835,7 +1093,7 @@ const Game = (function () {
   function rename(s, u, name) { const n = String(name || '').trim().slice(0, 18); if (n) u.name = n; return u.name; }
 
   /* ---------- Sicht ---------- */
-  function sightOf(s, u) { let r = clsOf(s, u).hunter ? 2 : 1; if (u.buff.sight > 0) r = Math.max(r, 2) + (clsOf(s, u).hunter ? 1 : 0); if (has(u, 'faehrtenleser') || has(u, 'weltenbummler') || u.relic === 'federkranz' || boonOf(s, u.sp) === 'wachsamkeit') r += 1; return Math.min(r, 4); }
+  function sightOf(s, u) { let r = clsOf(s, u).hunter ? 2 : 1; if (u.buff.sight > 0) r = Math.max(r, 2) + (clsOf(s, u).hunter ? 1 : 0); if (has(u, 'faehrtenleser') || has(u, 'weltenbummler') || u.relic === 'federkranz' || boonOf(s, u.sp) === 'wachsamkeit') r += 1; r += AF(u, 'sight'); return Math.min(r, 4); }
   function visibleSet(s, sp) {
     const vis = new Set();
     for (const u of s.units) {
@@ -847,7 +1105,7 @@ const Game = (function () {
     return vis;
   }
   function updateVision(s) { for (const sp of s.species) { if (!sp.alive || sp.neutral) continue; visibleSet(s, sp.id).forEach(i => s.tiles[i].seen[sp.id] = s.round); } }
-  function memoryOf(s, t, sp) { return s.species[sp].cls === 'elefant' ? 6 : BIOMES[t.biome].mem; }
+  function memoryOf(s, t, sp) { const b = s.species[sp].cls === 'elefant' ? 6 : BIOMES[t.biome].mem; return s.memo && s.memo[sp] ? b * 2 : b; }
   function knowState(s, t, vis) { if (vis.has(idx(t.x, t.y))) return 'vis'; const l = t.seen[0]; if (l !== undefined && s.round - l <= memoryOf(s, t, 0)) return 'mem'; return 'fog'; }
 
   /* ---------- Zustände ---------- */
@@ -868,6 +1126,8 @@ const Game = (function () {
     if (!isNight(s) && u.relic === 'sonnenstein') m += 1;
     if (has(u, 'geduldig') && u.stayed) m += 2;
     if (allyWith(s, u, e => hasT(e, 'urahn') || e.legacy === 'aura')) m += 1;
+    m += auraMod(s, u, null);
+    if (stat === 'we' && !isNight(s) && AF(u, 'wertiger')) m += 2;
     if ((where === 'ruine' || where === 'hoehle') && u.relic === 'knochenamulett') m += 2;
     if (where === 'ruine' && hasT(u, 'tempelwaechter')) m += 2;
     if (stat === 'we' && has(u, 'dschungelinstinkt')) m += 1;
@@ -887,7 +1147,7 @@ const Game = (function () {
     if (cold(s, u) > 0) L.push({ k: 'bad', t: `Kälte −${cold(s, u)} LP`, d: 'Kälteschaden pro Runde. Schutz: Höhle oder Dickes Fell.' });
     if (t.biome === 'wueste' && !has(u, 'wuestenlaeufer') && se.id !== 'regen') L.push({ k: 'bad', t: 'Wüstenhitze', d: 'Doppelter Hunger.' });
     if (cataAt(s, u.x, u.y)) L.push({ k: 'bad', t: CATA[s.cata.type].name, d: CATA[s.cata.type].desc });
-    if (ownTerritory(s, u)) L.push({ k: 'good', t: 'Eigenes Revier', d: '+1 auf Proben, Angriff und Verteidigung, +1 LP und +5 % Energie pro Runde.' });
+    if (ownTerritory(s, u)) L.push({ k: 'good', t: 'Eigenes Revier', d: '+1 auf Proben, Angriff und Verteidigung, +5 % Energie pro Runde.' });
     else if (t.owner !== null && t.owner !== undefined) L.push({ k: 'bad', t: `Fremdes Revier (${s.species[t.owner].plural})`, d: 'Sind Revierbesitzer anwesend, kommt es zum Kampf.' });
     if (u.buff.hide > 0) L.push({ k: 'good', t: `Versteckt (${u.buff.hide})`, d: 'Kann nicht angegriffen werden.' });
     if (u.buff.sight > 0) L.push({ k: 'good', t: `Ahnenblick (${u.buff.sight})`, d: 'Größere Sichtweite.' });
@@ -910,7 +1170,7 @@ const Game = (function () {
 
   /* ---------- Jahreszeiten & Katastrophen ---------- */
   function cold(s, u) {
-    const t = tileAt(s, u.x, u.y), se = season(s).id; if (t.loc === 'hoehle' || has(u, 'dickesfell')) return 0;
+    const t = tileAt(s, u.x, u.y), se = season(s).id; if (t.loc === 'hoehle' || has(u, 'dickesfell') || AF(u, 'coldImmune')) return 0;
     let c = 0;
     if (t.biome === 'schnee') c = se === 'winter' ? 2 : 1;
     if (t.biome === 'berg' && se === 'winter' && clsKey(s, u) !== 'steinbock' && !has(u, 'bergziege')) c = 1;
@@ -964,6 +1224,8 @@ const Game = (function () {
       if (has(u, 'eisenmagen')) h *= .75;
       if (boonOf(s, u.sp) === 'fuelle') h *= .5;
       if (clsKey(s, u) === 'baer' && se === 'winter' && t.loc === 'hoehle') h = 0;
+      if (se === 'winter' && AF(u, 'winterFood')) h = Math.min(h, 5);
+      if (AF(u, 'caveRest') && t.loc === 'hoehle' && u.stayed) h = 0;
       if (CLASSES[clsKey(s, u)].legendary) { u.sat = 90; u.fat = 0; continue; }
       u.sat = Math.max(0, u.sat - h);
       let f = u.stayed ? 5 : 10; if (se === 'regen') f += 3;
@@ -1022,6 +1284,7 @@ const Game = (function () {
     if (clsKey(s, u) === 'krokodil' && t.loc !== 'wasser') c.art = -.4;
     if (clsKey(s, u) === 'steinbock' && t.biome === 'berg' && danger > 0) c.art = .5;
     if (u.inj.length || u.buff.krank > 0) { if (t.loc === 'hoehle' || t.loc === 'oase') c.heilen = .5; }
+    if (u.sp === 0 && u.main && s.goal) { const d0 = cheb(u.x, u.y, s.goal.x, s.goal.y), d1 = cheb(tx, ty, s.goal.x, s.goal.y); c.ziel = (d0 - d1) * 1.5 + (d1 === 0 ? .8 : 0); }
     const parts = { food: w.hunger * nd.hunger * food * 1.6, rest: w.rest * nd.tired * rest, danger: -w.safe * (.4 + nd.hurt) * danger, fight: w.fight * (enemies ? 1 : 0) * .6, cur: w.cur * .5 * cur, soc: w.soc * .5 * soc, exp: (w.exp || .6) * .5 * exp };
     Object.assign(parts, c);
     let sum = 0; for (const k in parts) sum += parts[k];
@@ -1047,7 +1310,8 @@ const Game = (function () {
     hitze: () => 'meidet die Wüstenhitze',
     heimatnah: () => 'bleibt als Revierhüter nahe der Heimat',
     art: (o) => o.cls === 'krokodil' ? 'gehört ins Wasser' : 'flüchtet in die Felsen',
-    heilen: () => 'sucht Schutz, um Wunden zu heilen'
+    heilen: () => 'sucht Schutz, um Wunden zu heilen',
+    ziel: () => 'folgt deinem Ziel'
   };
   function explainMove(s, u, chosen, alt, prey, stay) {
     if (!alt) return [stay ? 'hat keinen besseren Ort gefunden' : 'zieht weiter'];
@@ -1057,6 +1321,7 @@ const Game = (function () {
     diffs.sort((p, q) => q[0] - p[0]);
     const o = { prey: prey ? nm(s, prey) : null, stay, cls: clsKey(s, u) };
     const meta = k => k === 'gedaechtnis' || k === 'unruhe';
+    if (diffs.some(([, k]) => k === 'ziel')) diffs.sort((p, q) => (q[1] === 'ziel') - (p[1] === 'ziel'));
     const prim = diffs.filter(([, k]) => !meta(k)), sec = diffs.filter(([, k]) => meta(k));
     const out = prim.slice(0, 3).concat(prim.length < 2 ? sec.slice(0, 1) : []).map(([, k]) => WHY[k](o));
     if (!out.length || tot < .05) out.push('folgt einer Laune, beide Wege waren fast gleich gut');
@@ -1072,13 +1337,24 @@ const Game = (function () {
   function movePhase(s) {
     s.moves = [];
     const vis0 = visibleSet(s, 0);
+    s.memo = {}; for (const u of live(s)) if (AF(u, 'mem')) s.memo[u.sp] = 1;
+    const lights = live(s).filter(e => AF(e, 'irrlicht'));
     for (const u of shuffle(s, live(s))) {
-      u.px = u.x; u.py = u.y; u.fought = false; u.sleep = false;
+      u.px = u.x; u.py = u.y; u.fought = false; u.sleep = false; u.stun = 0; u.knocked = false;
       if (u.fat >= 100) { u.sleep = true; u.fat = 60; u.stayed = true; u.mind = 'schläft'; u.why = ['ist vor Erschöpfung zusammengebrochen (Energie 0) und schläft']; u.stayN = (u.stayN || 0) + 1; if (u.sp === 0) addLog(s, `${u.name} bricht vor Erschöpfung zusammen und schläft.`, 'bad'); continue; }
       const C = clsOf(s, u);
-      if (clsKey(s, u) === 'krokodil' && tileAt(s, u.x, u.y).loc !== 'wasser' && s.round % 2 === 1) { u.stayed = true; u.mind = 'träge an Land'; u.why = ['ist an Land träge und zieht nur jede 2. Runde']; continue; }
+      if (clsKey(s, u) === 'krokodil' && !AF(u, 'lurkLand') && tileAt(s, u.x, u.y).loc !== 'wasser' && s.round % 2 === 1) { u.stayed = true; u.mind = 'träge an Land'; u.why = ['ist an Land träge und zieht nur jede 2. Runde']; continue; }
       if (u.sp === 0) u.why = [];
-      const steps = u.fat > 70 ? 1 : has(u, 'wanderer') ? 3 : has(u, 'weitlaeufer') || (has(u, 'schnell') && u.fat < 40) ? 2 : 1;
+      const steps = u.fat > 70 ? 1 : (has(u, 'wanderer') ? 3 : has(u, 'weitlaeufer') || (has(u, 'schnell') && u.fat < 40) ? 2 : 1) + AF(u, 'steps');
+      const lured = lights.find(e => e.alive && e.sp !== u.sp && cheb(e.x, e.y, u.x, u.y) <= 1);
+      if (lured && !s.species[u.sp].neutral && R(s) < .5) {
+        const [lx, ly] = pick(s, neighbors(u.x, u.y, false)); u.x = lx; u.y = ly; u.mind = 'verwirrt';
+        if (u.sp === 0) u.why = [`wurde von einem Irrlicht (${nm(s, lured)}) in die Irre geführt`];
+        u.stayed = false; u.stayN = 0; u.trail = [idx(u.x, u.y)].concat(u.trail || []).slice(0, 5);
+        s.moves.push({ id: u.id, fx: u.px, fy: u.py, tx: u.x, ty: u.y });
+        if (u.sp !== 0 && playerSees(s, u.x, u.y)) addLog(s, `${nm(s, u)} folgt einem Irrlicht und verläuft sich.`, 'info');
+        continue;
+      }
       for (let k = 0; k < steps; k++) {
         const g = groupByTile(s), nd = needsOf(s, u);
         let prey = null;
@@ -1103,6 +1379,8 @@ const Game = (function () {
       u.stayN = u.stayed ? (u.stayN || 0) + 1 : 0;
       u.trail = [idx(u.x, u.y)].concat(u.trail || []).slice(0, 5);
       if (callOf(s, u.sp) === 'verbergen' && R(s) < .3) u.buff.hide = Math.max(u.buff.hide || 0, 1);
+      { const hd = AF(u, 'hide'); if (hd && ((hd === 'nacht' && isNight(s)) || tileAt(s, u.x, u.y).biome === hd)) u.buff.hide = Math.max(u.buff.hide || 0, 1); }
+      if (u.sp === 0 && u.main && s.goal && u.x === s.goal.x && u.y === s.goal.y) { s.goal = null; addLog(s, `${u.name} hat das Ziel erreicht.`, 'good'); }
       if (!u.stayed) s.moves.push({ id: u.id, fx: u.px, fy: u.py, tx: u.x, ty: u.y });
       const tb = tileAt(s, u.x, u.y).biome, fb = tileAt(s, u.px, u.py).biome;
       if (u.sp === 0 && tb !== fb) addLog(s, `${u.name} zieht weiter in ${tb === 'wueste' ? 'die Wüste' : tb === 'steppe' ? 'die Steppe' : tb === 'berg' ? 'die Berge' : tb === 'schnee' ? 'den Schnee' : 'den Dschungel'} (${u.mind}).`, 'move');
@@ -1115,12 +1393,13 @@ const Game = (function () {
     if (a.sleep) return false;
     if (a.sp === 0 && a.main) return false;
     if (clsOf(s, a).legendary) return R(s) < .5;
+    if (AF(a, 'werMoon') && werNight(s)) return true;
     if (clsOf(s, a).hunter && a.sat < 55) return true;
     if (a.beh === 'aggressiv') return true;
     if (a.beh === 'territorial' && (cheb(a.x, a.y, a.hx, a.hy) <= 2 || ownTerritory(s, a))) return true;
     return false;
   }
-  function attackBonus(s, a, first) {
+  function attackBonus(s, a, first, d) {
     let b = 0; const k = clsKey(s, a);
     if (k === 'tiger' && first) b += 2;
     if (k === 'nashorn' && first) b += 3;
@@ -1135,30 +1414,85 @@ const Game = (function () {
     if (a.buff.krank > 0) b -= 2;
     if (hasT(a, 'jaegerkoenig')) b += 1;
     if (boonOf(s, a.sp) === 'kampfgeist') b += 1;
+    if (a.ab && a.ab.length) {
+      const t = tileAt(s, a.x, a.y);
+      if (first && !(d && AF(d, 'noSurprise'))) b += AF(a, 'first');
+      const ab = AF(a, 'atkBiome'); if (ab && ab.includes(t.biome)) b += 2;
+      if (AF(a, 'atkTerr') && ownTerritory(s, a)) b += AF(a, 'atkTerr');
+      if (AF(a, 'atkWater') && (t.loc === 'wasser' || neighbors(a.x, a.y, false).some(([x, y]) => tileAt(s, x, y).loc === 'wasser'))) b += AF(a, 'atkWater');
+      if (AF(a, 'wertiger') && isNight(s)) b += 2;
+      if (AF(a, 'werMoon') && werNight(s)) b += 2;
+      if (AF(a, 'pack')) for (const e of s.units) if (e.alive && e !== a && e.sp === a.sp && cheb(e.x, e.y, a.x, a.y) <= 1 && AF(e, 'pack')) b++;
+    }
+    b += auraMod(s, a, d);
     return b;
   }
+  function auraMod(s, u, d) {
+    let howl = false, curse = false; const night = isNight(s);
+    if (night) for (const e of s.units) {
+      if (!e.alive || !e.ab || !e.ab.length) continue;
+      if (!howl && e.sp === u.sp && AF(e, 'moonHowl') && cheb(e.x, e.y, u.x, u.y) <= 2) howl = true;
+      if (!curse && e.sp !== u.sp && AF(e, 'curseAura') && cheb(e.x, e.y, u.x, u.y) <= 1) curse = true;
+    }
+    return (howl ? 1 : 0) - (curse ? 2 : 0) - (d ? AF(d, 'fearAura') : 0);
+  }
   function defense(s, d) { let v = 10 + mod(eff(d, 'ge')); if (tileAt(s, d.x, d.y).biome === 'berg') v += 1; if (has(d, 'bergziege')) v += 1; if (d.sleep) v -= 2; if (ownTerritory(s, d)) v += 1; if (hasT(d, 'veteran')) v += 1; if (boonOf(s, d.sp) === 'kampfgeist') v += 1; if (allyWith(s, d, e => has(e, 'beschuetzer'))) v += 1; return v; }
-  function hitChance(s, a, d, first) { const need = defense(s, d) - mod(eff(a, 'st')) - attackBonus(s, a, first); return clamp((21 - need) / 20, .05, .95); }
+  function hitChance(s, a, d, first) { if (a.stun > 0) return 0; const need = defense(s, d) - mod(eff(a, 'st')) - attackBonus(s, a, first, d); return clamp((21 - need) / 20, .05, .95); }
   function strike(s, a, d, first, L, verbose) {
+    if (a.stun > 0) { a.stun--; L.push(`${a.name} ist wie erstarrt und schlägt nicht zu.`); return 0; }
     let r = 1 + ri(s, 20);
     if (first && clsKey(s, a) === 'krokodil' && tileAt(s, a.x, a.y).loc === 'wasser') r = Math.max(r, 1 + ri(s, 20));
-    const tot = r + mod(eff(a, 'st')) + attackBonus(s, a, first), def = defense(s, d);
+    const tot = r + mod(eff(a, 'st')) + attackBonus(s, a, first, d), def = defense(s, d);
     const who = nm(s, a);
     const critAt = a.legacy === 'zahn' ? 19 : 20;
     if (r === 1 || (r < critAt && tot < def)) { L.push(verbose ? `${who} verfehlt (W20 ${r}, ${tot} gegen ${def}).` : `${a.name} verfehlt.`); return 0; }
     let dmg = 1 + ri(s, 5) + mod(eff(a, 'st')) + (a.beh === 'aggressiv' ? 1 : 0) + (clsKey(s, a) === 'baer' ? 1 : 0) + (a.relic === 'blutzahn' ? 1 : 0);
     if (r >= critAt) dmg *= 2; if (r >= critAt && first && clsKey(s, a) === 'tiger') dmg *= 2;
-    if (has(d, 'narben')) dmg -= 1; if (clsKey(s, d) === 'nashorn') dmg -= 1; if (has(d, 'dickhaeuter')) dmg -= 1; dmg = Math.max(1, dmg);
+    if (a.ab && a.ab.length) {
+      if (first) dmg += AF(a, 'firstDmg');
+      if (AF(a, 'wertiger') && isNight(s)) dmg += 1;
+      if (AF(a, 'werMoon') && werNight(s)) dmg += 2;
+      if (first && AF(a, 'nightFirst') && isNight(s)) dmg *= 2;
+      if (first && AF(a, 'waterAtk') && tileAt(s, a.x, a.y).loc === 'wasser') dmg *= 2;
+      if (AF(a, 'rage') && a.hp / maxHp(s, a) < .3) dmg *= 2;
+    }
+    if (has(d, 'narben')) dmg -= 1; if (clsKey(s, d) === 'nashorn') dmg -= 1; if (has(d, 'dickhaeuter')) dmg -= 1;
+    dmg -= AF(d, 'dr');
+    const hf = AF(d, 'half'); if (hf === 'all' || (hf === 'noncrit' && r < critAt)) dmg = Math.ceil(dmg / 2);
+    dmg = Math.max(1, dmg);
     d.hp -= dmg;
-    if (clsKey(s, a) === 'schlange' && d.hp > 0 && !has(d, 'giftfest') && R(s) < .4) { const ex = d.inj.find(j => j.id === 'wunde'); if (ex) ex.r = Math.max(ex.r, 3); else d.inj.push({ id: 'wunde', r: 3 }); L.push(`${d.name} ist vergiftet.`); }
+    const pz = Math.max(clsKey(s, a) === 'schlange' ? .4 : 0, AF(a, 'poison'), first && AF(a, 'poisonFirst') ? 1 : 0);
+    if (pz && d.hp > 0 && !has(d, 'giftfest') && R(s) < pz) { const ex = d.inj.find(j => j.id === 'wunde'); if (ex) ex.r = Math.max(ex.r, 3); else d.inj.push({ id: 'wunde', r: 3 }); L.push(`${d.name} ist vergiftet.`); }
+    else if (AF(a, 'wound') && d.hp > 0 && R(s) < AF(a, 'wound')) { const ex = d.inj.find(j => j.id === 'wunde'); if (ex) ex.r = Math.max(ex.r, 3); else d.inj.push({ id: 'wunde', r: 3 }); L.push(`${d.name} blutet aus einer tiefen Wunde.`); }
+    if (AF(a, 'spores') && d.hp > 0 && !(d.buff.krank > 0) && !has(d, 'giftfest') && R(s) < AF(a, 'spores')) { d.buff.krank = 3; L.push(`${d.name} atmet Sporen ein und erkrankt.`); }
     L.push(verbose ? `${who} trifft${r >= critAt ? ' kritisch' : ''}: ${dmg} Schaden (W20 ${r}, ${tot} gegen ${def}).` : `${a.name} trifft${r >= critAt ? ' kritisch' : ''} (${dmg}).`);
     if (d.hp <= 0) kill(s, d, a, L);
+    const bn = AF(d, 'burn');
+    if (bn && a.alive) { a.hp -= bn; L.push(`${a.name} verbrennt sich an ${d.name} (${bn}).`); if (a.hp <= 0) { a.cause = `an ${nm(s, d)} verbrannt`; kill(s, a, d.alive ? d : null, L); } }
+    if (d.alive && a.alive && AF(a, 'ramm') && R(s) < AF(a, 'ramm')) { d.knocked = true; L.push(`${a.name} schleudert ${d.name} davon.`); }
     return dmg;
   }
-  function fleeBonus(s, d) { const k = clsKey(s, d), t = tileAt(s, d.x, d.y); return (d.beh === 'scheu' ? 2 : 0) + (has(d, 'gerissen') ? 2 : 0) + (t.biome === 'steppe' ? 1 : 0) + (k === 'steinbock' && t.biome === 'berg' ? 3 : 0) + (k === 'affe' ? 1 : 0) + (k === 'schlange' ? 2 : 0) + (has(d, 'kletterer') && (t.biome === 'dschungel' || t.biome === 'berg') ? 2 : 0) + (d.relic === 'federkranz' ? 1 : 0) - (isNight(s) && !clsOf(s, d).hunter && !has(d, 'nachtauge') ? 1 : 0); }
-  function fleeChance(s, d, a) { const diff = mod(eff(d, 'ge')) + fleeBonus(s, d) - mod(eff(a, 'ge')); let w = 0; for (let x = 1; x <= 20; x++) for (let y = 1; y <= 20; y++) if (x + diff > y) w++; return w / 400; }
+  function hitRound(s, x, y, first, L, verbose, st) {
+    if (!x.alive || !y.alive) return;
+    strike(s, x, y, first, L, verbose);
+    if (x.alive && y.alive && !y.knocked && AF(x, 'double')) strike(s, x, y, false, L, verbose);
+    const ao = AF(x, 'aoe');
+    if (x.alive && ao && (ao === 'each' || !st[x.id])) { const others = alliesOf(s, y); if (others.length) { st[x.id] = 1; L.push(`${x.name} trifft alle auf dem Feld.`); others.forEach(e => { if (x.alive && e.alive) strike(s, x, e, false, L, verbose); }); } }
+  }
+  function openingMoves(s, a, d, L) {
+    for (const [x, y] of [[a, d], [d, a]]) {
+      if (!x.alive || !y.alive || !x.ab || !x.ab.length) continue;
+      const gz = AF(x, 'gaze'); if (gz && !roll(s, y, 'we', gz).ok) { y.stun = 1; L.push(`${y.name} erstarrt unter dem Blick von ${x.name}.`); }
+      if (AF(x, 'stare')) { y.stun = 1; L.push(`${x.name} starrt ${y.name} an. ${y.name} kann sich nicht rühren.`); }
+      if (AF(x, 'quake')) { [y].concat(alliesOf(s, y)).forEach(e => { e.stun = 1; }); L.push(`${x.name} lässt die Erde beben. Die Gegner taumeln.`); }
+      if (x === a && AF(x, 'stunFirst') && R(s) < AF(x, 'stunFirst')) { y.stun = 1; L.push(`${x.name} schlägt ein wie ein Blitz. ${y.name} ist betäubt.`); }
+    }
+  }
+  function fleeBonus(s, d) { const k = clsKey(s, d), t = tileAt(s, d.x, d.y); return (d.beh === 'scheu' ? 2 : 0) + (has(d, 'gerissen') ? 2 : 0) + (t.biome === 'steppe' ? 1 : 0) + (k === 'steinbock' && t.biome === 'berg' ? 3 : 0) + (k === 'affe' ? 1 : 0) + (k === 'schlange' ? 2 : 0) + (has(d, 'kletterer') && (t.biome === 'dschungel' || t.biome === 'berg') ? 2 : 0) + (d.relic === 'federkranz' ? 1 : 0) - (isNight(s) && !clsOf(s, d).hunter && !has(d, 'nachtauge') ? 1 : 0) + AF(d, 'flee') + (t.biome === 'berg' ? AF(d, 'fleeBerg') : 0); }
+  function fleeChance(s, d, a) { if (AF(a, 'hold')) return 0; if (AF(d, 'fleeAlways')) return 1; const diff = mod(eff(d, 'ge')) + fleeBonus(s, d) - mod(eff(a, 'ge')) - AF(a, 'pursuer'); let w = 0; for (let x = 1; x <= 20; x++) for (let y = 1; y <= 20; y++) if (x + diff > y) w++; return w / 400; }
   function tryFlee(s, d, a) {
-    if (1 + ri(s, 20) + mod(eff(d, 'ge')) + fleeBonus(s, d) > 1 + ri(s, 20) + mod(eff(a, 'ge'))) {
+    if (AF(a, 'hold')) return false;
+    if (AF(d, 'fleeAlways') || 1 + ri(s, 20) + mod(eff(d, 'ge')) + fleeBonus(s, d) > 1 + ri(s, 20) + mod(eff(a, 'ge')) - AF(a, 'pursuer')) {
       const opts = neighbors(d.x, d.y, false);
       const safe = opts.filter(([x, y]) => !s.units.some(e => e.alive && e.sp === a.sp && e.x === x && e.y === y));
       const [x, y] = pick(s, safe.length ? safe : opts); d.x = x; d.y = y; return true;
@@ -1166,6 +1500,7 @@ const Game = (function () {
     return false;
   }
   function afterFight(s, us) {
+    for (const u of us) { u.stun = 0; if (u.knocked && u.alive) { const o = us.find(e => e !== u); stepAway(s, u, o ? o.sp : -1); } u.knocked = false; }
     for (const u of us) if (u.alive) {
       u.fights++; if (u.fights >= 3) unlock(s, u, 'narben');
       if (u.hp / maxHp(s, u) < .35 && R(s) < .45) injure(s, u, pick(s, ['bein', 'prellung', 'wunde']));
@@ -1178,14 +1513,16 @@ const Game = (function () {
   function autoFight(s, a, d, noFlee) {
     a.fought = d.fought = true; mark(s, d.x, d.y, 'fight');
     const L = [`${nm(s, a)} greift ${nm(s, d)} an.`];
-    if (!noFlee && d.beh !== 'aggressiv' && !d.sleep && tryFlee(s, d, a)) { L.push(`${d.name} entkommt.`); report(s, [a, d], L); return L; }
+    if (!noFlee && d.beh !== 'aggressiv' && !d.sleep && !AF(d, 'rage') && tryFlee(s, d, a)) { L.push(`${d.name} entkommt.`); report(s, [a, d], L); return L; }
+    openingMoves(s, a, d, L);
+    const st = {};
     for (let i = 0; i < 4; i++) {
-      strike(s, a, d, i === 0, L); if (!d.alive) break;
+      hitRound(s, a, d, i === 0, L, false, st); if (!d.alive || d.knocked) break;
       allyStrikes(s, a, d, L); if (!d.alive) break;
-      strike(s, d, a, false, L); if (!a.alive) break;
+      hitRound(s, d, a, false, L, false, st); if (!a.alive || a.knocked) break;
       allyStrikes(s, d, a, L); if (!a.alive) break;
       const loser = a.hp / maxHp(s, a) < d.hp / maxHp(s, d) ? a : d, other = loser === a ? d : a;
-      if (loser.beh !== 'aggressiv' || loser.hp / maxHp(s, loser) < .25) if (tryFlee(s, loser, other)) { L.push(`${loser.name} flieht.`); break; }
+      if (!AF(loser, 'rage') && (loser.beh !== 'aggressiv' || loser.hp / maxHp(s, loser) < .25)) if (tryFlee(s, loser, other)) { L.push(`${loser.name} flieht.`); break; }
     }
     afterFight(s, [a, d]);
     report(s, [a, d], L);
@@ -1206,7 +1543,7 @@ const Game = (function () {
     if (s.fight.me === 'd' && !clsOf(s, d).hunter && !d.sleep && !why) {
       s.fight.chase = { dist: a.fat > 70 ? 3 : 2, n: 0, max: 4, goal: 4, done: false, res: null, helped: false };
       s.fight.log = [`${nm(s, a)} hat ${d.name} gewittert und setzt zur Hetzjagd an!`];
-    }
+    } else openingMoves(s, a, d, s.fight.log);
     return s.fight;
   }
   /* Hetzjagd: Beutetiere können vor dem Kampf fliehen */
@@ -1238,7 +1575,7 @@ const Game = (function () {
     const { me, foe, a, d } = fightSides(s); const L = []; H.n++;
     me.fat = Math.min(100, me.fat + 6);
     const v = chaseView(s) || { opts: [] }; const o = v.opts.find(x => x.id === id) || v.opts[0];
-    if (o.id === 'stellen') { L.push(`${me.name} bleibt stehen, dreht sich um und stellt sich ${foe.name}.`); H.done = true; H.res = 'gestellt'; }
+    if (o.id === 'stellen') { L.push(`${me.name} bleibt stehen, dreht sich um und stellt sich ${foe.name}.`); H.done = true; H.res = 'gestellt'; openingMoves(s, a, d, L); }
     else if (o.id === 'rudel') {
       const hp = chaseHelper(s, me); H.helped = true;
       if (hp) { L.push(`${hp.name} springt dazwischen!`); strike(s, foe, hp, false, L, true); if (!hp.alive) L.push(`${hp.name} hat sich für ${me.name} geopfert.`); else gainXp(s, hp, 2); }
@@ -1270,7 +1607,7 @@ const Game = (function () {
         L.push(`${foe.name} holt ${me.name} ein und springt!`);
         strike(s, a, d, true, L, true);
         if (!me.alive) { F.over = 'dead'; addLog(s, `Hetzjagd: ${nm(s, foe)} hat ${me.name} eingeholt und gerissen.`, 'bad'); }
-        else L.push(`${me.name} muss kämpfen.`);
+        else { L.push(`${me.name} muss kämpfen.`); openingMoves(s, a, d, L); }
         F.n = 1;
       }
     }
@@ -1293,10 +1630,13 @@ const Game = (function () {
       s.chains.push({ kind: 'rivale', uid: foe.id, due: s.round + 5 + ri(s, 5), mood: R(s) < .55 ? 'dank' : 'rache' });
       gainXp(s, me, 2);
     } else {
-      strike(s, a, d, first, L, true);
-      if (d.alive && a.alive) allyStrikes(s, a, d, L, true);
-      if (d.alive && a.alive) strike(s, d, a, false, L, true);
-      if (d.alive && a.alive) allyStrikes(s, d, a, L, true);
+      if (!F.aoe) F.aoe = {};
+      hitRound(s, a, d, first, L, true, F.aoe);
+      if (d.alive && a.alive && !d.knocked) allyStrikes(s, a, d, L, true);
+      if (d.alive && a.alive && !d.knocked) hitRound(s, d, a, false, L, true, F.aoe);
+      if (d.alive && a.alive && !a.knocked) allyStrikes(s, d, a, L, true);
+      if (me.alive && foe.alive && foe.knocked) { foe.knocked = false; stepAway(s, foe, me.sp); F.over = 'foeFled'; L.push(`${foe.name} landet ein Feld weiter und gibt auf.`); }
+      else if (me.alive && foe.alive && me.knocked) { me.knocked = false; stepAway(s, me, foe.sp); F.over = 'fled'; L.push(`${me.name} wird ein Feld weit geschleudert. Der Kampf ist vorbei.`); }
       if (foe.alive && me.alive && foe.hp / maxHp(s, foe) < .3 && foe.beh !== 'aggressiv' && R(s) < .6 && tryFlee(s, foe, me)) { L.push(`${foe.name} flieht verwundet.`); F.over = 'foeFled'; }
     }
     if (!me.alive) F.over = 'dead'; else if (!foe.alive) F.over = 'won';
@@ -1312,7 +1652,15 @@ const Game = (function () {
 
   function kill(s, u, killer, L) {
     if (!u.alive) return;
+    const rv = AF(u, 'revive');
+    if (rv && !u.revived && !/Alters/.test(u.cause || '')) {
+      u.revived = true; u.hp = rv === 'half' ? Math.ceil(maxHp(s, u) / 2) : 1; u.cause = null;
+      const t = rv === 'half' ? `${u.name} sinkt nieder und erhebt sich wieder. Neue Köpfe wachsen nach!` : `${u.name} müsste fallen, doch das Rosenblut hält ${u.name} am Leben.`;
+      if (L) L.push(t); if (u.sp === 0 || playerSees(s, u.x, u.y)) addLog(s, t, 'alert');
+      return;
+    }
     u.alive = false; u.hp = 0; s.deaths++;
+    if (!s.species[u.sp].neutral && live(s).some(e => e.sp === u.sp && AF(e, 'xpShare'))) { for (const e of live(s)) if (e.sp === u.sp) gainXp(s, e, Math.max(2, u.lvl * 2)); if (u.sp === 0) addLog(s, `Der Ruf der Ahnen: ${u.name} gibt seine Erfahrung an das Rudel weiter.`, 'info'); }
     if (L) L.push(`${u.name} stirbt.`);
     const legend = s.species[u.sp].neutral;
     if (killer && killer.alive) {
@@ -1353,7 +1701,7 @@ const Game = (function () {
   function damage(s, u, n, cause) {
     if (!u.alive || n <= 0) return;
     u.hp -= n;
-    if (u.hp <= 0) { u.cause = cause; kill(s, u, null); if (u.sp === 0) addLog(s, `${u.name} ist ${cause}.`, 'bad'); else if (playerSees(s, u.x, u.y)) addLog(s, `${nm(s, u)} ist ${cause}.`, ''); }
+    if (u.hp <= 0) { u.cause = cause; kill(s, u, null); if (u.alive) return; if (u.sp === 0) addLog(s, `${u.name} ist ${cause}.`, 'bad'); else if (playerSees(s, u.x, u.y)) addLog(s, `${nm(s, u)} ist ${cause}.`, ''); }
   }
   function succession(s, sp) {
     if (s.species[sp].neutral) return;
@@ -1391,8 +1739,49 @@ const Game = (function () {
       u.xp -= need(u.lvl); u.lvl++; u.pts += 2; if ([3, 6, 9].includes(u.lvl)) u.picks++;
       u.hp = Math.min(maxHp(s, u), u.hp + 3);
       if (u.sp === 0) addLog(s, `${u.name} erreicht Level ${u.lvl}.`, 'good');
+      if (u.lvl >= 5 && tryEvolve(s, u)) break;
     }
     if (u.lvl >= 11) u.xp = Math.min(u.xp, 999);
+  }
+  function wayScore(s, u, o, noRnd) {
+    let sc = 0; for (const k of STATS) sc += (o.w[k] || 0) * eff(u, k);
+    if (o.b && o.b.includes(u.beh)) sc += 3;
+    const br = u.biomeR || {}, K = o.k || {};
+    const ctr = { kills: u.kills || 0, fights: u.fights || 0, nights: u.nights || 0, children: u.children || 0, water: u.waterR || 0, cold: (br.schnee || 0) + (br.berg || 0), jungle: br.dschungel || 0 };
+    for (const k in K) sc += K[k] * Math.min(ctr[k] || 0, 20);
+    return sc + (noRnd ? 0 : R(s) * 2);
+  }
+  function evoPreview(s, u) { const opts = evoOptions(s, u); if (!opts) return null; return opts.map(o => ({ o, sc: wayScore(s, u, o, true) })).sort((a, b) => b.sc - a.sc); }
+  function evoOptions(s, u) {
+    if (!u.alive || s.species[u.sp].neutral) return null;
+    const tree = EVO[clsKey(s, u)]; if (!tree) return null;
+    if (!u.form) return tree;
+    if (u.stage === 1) return FORMS[u.form].fin;
+    return null;
+  }
+  function tryEvolve(s, u) {
+    if (u.lvl < 5) return false;
+    const opts = evoOptions(s, u); if (!opts) return false;
+    if (u.form && s.round < EVO_ROUND2) return false;
+    const best = opts.map(o => [wayScore(s, u, o), o]).sort((a, b) => b[0] - a[0])[0][1];
+    evolveTo(s, u, best.id, 'grow');
+    return true;
+  }
+  function evolveTo(s, u, fid, how) {
+    const F = FORMS[fid]; if (!F) return;
+    const prev = u.form ? FORMS[u.form].n : CLASSES[clsKey(s, u)].name;
+    if (how === 'grow') { u.bonusHp += (u.lvl - 1) * Math.max(1, 2 + mod(u.ko)) + 3; u.lvl = 1; u.xp = 0; }
+    u.form = fid; u.stage = F.stage; u.ab = F.stage === 2 ? [FORMS[F.parent].ab, F.ab] : [F.ab];
+    u.hp = Math.min(maxHp(s, u), u.hp + (how === 'grow' ? 5 : 0));
+    if (!s.evos) s.evos = [];
+    s.evos.push({ r: s.round, id: u.id, sp: u.sp, form: fid, from: prev, how, main: !!u.main });
+    if (s.evos.length > 80) s.evos.splice(0, s.evos.length - 80);
+    const sp = s.species[u.sp];
+    if (how === 'grow') {
+      if (u.sp === 0) { addLog(s, `${u.name} entwickelt sich: ${prev} → ${F.n}. Zurück auf Level 1, neue Fähigkeit „${ABIL[F.ab].name}“.`, 'alert'); if (u.main || F.stage === 2) addSaga(s, F.stage === 2 ? `${u.name} wurde zur Legende: ${F.n}.` : `${u.name} wuchs über sich hinaus und wurde zur Form „${F.n}“.`); }
+      else if (F.stage === 2) { addLog(s, `Bei den ${sp.plural} ist eine Legende erwacht: ${F.n}.`, 'alert'); }
+      else if (playerSees(s, u.x, u.y)) addLog(s, `Ein ${sp.name} hat sich entwickelt: ${F.n}.`, 'warn');
+    } else if (u.sp === 0) addLog(s, `${u.name} kommt als ${F.n} zur Welt.`, 'good');
   }
   function unlock(s, u, id) {
     if (has(u, id) || (u.traits.length >= 9 && id !== 'bezwinger')) return false;
@@ -1417,7 +1806,7 @@ const Game = (function () {
     for (const [dx, dy] of cells) {
       const x = u.x + dx, y = u.y + dy; if (!inb(x, y)) continue; const t = tileAt(s, x, y);
       if (t.owner === u.sp) continue;
-      if (t.owner !== null && live(s).some(e => e.sp === t.owner && e.x === x && e.y === y)) { mark(s, x, y, 'tension'); continue; }
+      if (t.owner !== null && live(s).some(e => e.sp === t.owner && (e.x === x && e.y === y || (AF(e, 'guard') && cheb(e.x, e.y, x, y) <= 1)))) { mark(s, x, y, 'tension'); continue; }
       const prev = t.owner; t.owner = u.sp; got.push(t); mark(s, x, y, 'claim');
       if (prev === 0 && u.sp !== 0) addLog(s, `Die ${s.species[u.sp].plural} haben eines deiner Reviere übernommen.`, 'bad');
     }
@@ -1431,6 +1820,8 @@ const Game = (function () {
     const C = CLASSES[s.species[sp].cls], g = {};
     for (const k of STATS) g[k] = parents.length ? Math.round(parents.reduce((m, q) => m + (q[k] - C[k]), 0) / parents.length * .5) : 0;
     g.gen = parents.length ? Math.max(...parents.map(q => q.gen || 1)) + 1 : 1;
+    g.forms = parents.filter(q => q.form).map(q => q.form);
+    g.fav = parents.some(q => s.fav && s.fav[sp] === q.id);
     return g;
   }
   function spawnChild(s, sp, parents, x, y, genes) {
@@ -1443,6 +1834,11 @@ const Game = (function () {
     const c = newUnit(s, sp, x, y, { beh, traits: inh, lvl, ko: s.species[sp].cls === 'elefant' ? 1 : 0, gen: g.gen });
     for (const k of STATS) { const r = R(s); let v = c[k] + (g[k] || 0) + (r < .2 ? -1 : r > .8 ? 1 : 0); if (f === k && R(s) < .7) v += 1; c[k] = clamp(v, C[k] - 3, C[k] + 6); }
     c.hp = maxHp(s, c); c.ageSt = 'young';
+    const forms = g.forms || [];
+    if (forms.length) {
+      let ch = forms.length === 2 && forms[0] === forms[1] ? .75 : .5; if (g.fav) ch += .25;
+      if (R(s) < ch) evolveTo(s, c, pick(s, forms), 'birth');
+    }
     for (const q of parents) q.children = (q.children || 0) + 1;
     c.sat = 55; c.cd = CLASSES[s.species[sp].cls].cd; c.stayed = true; s.births++;
     return c;
@@ -1471,9 +1867,10 @@ const Game = (function () {
       g[k].forEach(u => (bySp[u.sp] = bySp[u.sp] || []).push(u));
       for (const sp in bySp) {
         if (s.species[sp].neutral) continue;
-        const ready = bySp[sp].filter(u => u.alive && u.sat > 60 && u.cd === 0 && !u.sleep && u.ageSt !== 'young' && !(u.buff.krank > 0) && !(s.species[sp].player && u.main));
+        const fv = s.fav && s.fav[sp];
+        const ready = bySp[sp].filter(u => u.alive && u.sat > (u.id === fv ? 45 : 60) && u.cd === 0 && !u.sleep && u.ageSt !== 'young' && !(u.buff.krank > 0) && !(s.species[sp].player && u.main)).sort((a, b) => (a.id === fv) - (b.id === fv) || (a.form ? 1 : 0) - (b.form ? 1 : 0));
         const bm = boonOf(s, +sp) === 'fruchtbarkeit' ? 2 : 1;
-        while (ready.length >= 2) { const a = ready.pop(), b = ready.pop(); const sv = hasT(a, 'stammvater') || hasT(b, 'stammvater') ? 1.3 : 1; if (R(s) < (t.loc === 'oase' ? .55 : .3) * mult * bm * sv) breed(s, a, b, false); }
+        while (ready.length >= 2) { const a = ready.pop(), b = ready.pop(); const sv = hasT(a, 'stammvater') || hasT(b, 'stammvater') ? 1.3 : 1; const fb = a.id === fv || b.id === fv ? 1.6 : 1; if (R(s) < (t.loc === 'oase' ? .6 : .37) * mult * bm * sv * fb) breed(s, a, b, false); }
       }
     }
   }
@@ -1486,6 +1883,7 @@ const Game = (function () {
     for (const k in g) {
       const list = g[k], t = s.tiles[k];
       if (new Set(list.map(u => u.sp)).size < 2) continue;
+      for (const u of list) if (u.alive && AF(u, 'steal') && u.sat < 85 && list.some(e => e.alive && e.sp !== u.sp)) { u.sat = Math.min(100, u.sat + 20); if (u.sp === 0) addLog(s, `${u.name} stibitzt Fremden das Futter (+20 % Sättigung).`, 'good'); }
       /* Revierstreit */
       if (t.owner !== null && !s.species[t.owner].neutral) {
         const owners = list.filter(u => u.alive && u.sp === t.owner && !u.fought && !u.sleep);
@@ -1505,6 +1903,7 @@ const Game = (function () {
         if (!foes.length) continue;
         foes.sort((p, q) => p.hp - q.hp);
         const d = foes[0];
+        if (AF(d, 'fear') && (a.ageSt === 'young' || a.lvl < d.lvl) && !clsOf(s, a).legendary) { a.fought = true; mark(s, a.x, a.y, 'tension'); if (playerSees(s, a.x, a.y) || d.sp === 0) addLog(s, `${nm(s, a)} weicht vor ${nm(s, d)} zurück.`, ''); continue; }
         if (clsKey(s, d) === 'elefant' && clsOf(s, a).hunter && !roll(s, a, 'st', 13).ok) { a.fought = true; mark(s, a.x, a.y, 'tension'); if (playerSees(s, a.x, a.y) || d.sp === 0) addLog(s, `${nm(s, a)} wagt sich nicht an ${nm(s, d)} heran.`, ''); continue; }
         engage(a, d);
       }
@@ -1519,6 +1918,7 @@ const Game = (function () {
       if (t.owner === u.sp) continue;
       const ownerHere = t.owner !== null && live(s).some(e => e.sp === t.owner && e.x === u.x && e.y === u.y);
       if (ownerHere) continue;
+      if (t.owner !== null && live(s).some(e => e.sp === t.owner && AF(e, 'guard') && cheb(e.x, e.y, t.x, t.y) <= 1)) continue;
       if (t.owner !== null && (u.beh === 'territorial' || u.beh === 'aggressiv' || u.main) && R(s) < .5) {
         const prev = t.owner; t.owner = u.sp; mark(s, t.x, t.y, 'claim');
         if (prev === 0) addLog(s, `${nm(s, u)} erobert eines deiner Reviere (${BIOMES[t.biome].name}).`, 'bad');
@@ -1541,9 +1941,9 @@ const Game = (function () {
       const c = cold(s, u); if (c) damage(s, u, c, 'erfroren');
       if (!u.alive) continue;
       if (s.cata && cataAt(s, u.x, u.y)) {
-        if (s.cata.type === 'brand') damage(s, u, hasT(u, 'unverwuestlich') ? 2 : 3, 'im Feuer umgekommen');
+        if (s.cata.type === 'brand' && !AF(u, 'fireImmune')) damage(s, u, hasT(u, 'unverwuestlich') ? 2 : 3, 'im Feuer umgekommen');
         u.cataHit = s.cata.start;
-        if (s.cata.type === 'flut' && !has(u, 'schwimmer') && clsKey(s, u) !== 'krokodil') { damage(s, u, 2, 'ertrunken'); u.fat = Math.min(100, u.fat + 20); }
+        if (s.cata.type === 'flut' && !has(u, 'schwimmer') && clsKey(s, u) !== 'krokodil' && !AF(u, 'floodImmune')) { damage(s, u, 2, 'ertrunken'); u.fat = Math.min(100, u.fat + 20); }
         if (!u.alive) continue;
       }
       if (u.buff.krank > 0 && has(u, 'giftfest')) u.buff.krank = 0;
@@ -1558,8 +1958,8 @@ const Game = (function () {
       if (t.loc === 'wasser') { u.fat = Math.max(0, u.fat - 10); if (se !== 'duerre') u.hp = Math.min(mh, u.hp + 1); if (clsKey(s, u) === 'krokodil') u.hp = Math.min(mh, u.hp + 2); }
       if (t.loc === 'hoehle') u.fat = Math.max(0, u.fat - (u.stayed ? 40 : 10));
       if (t.loc === 'oase') { u.hp = Math.min(mh, u.hp + 3); u.fat = Math.max(0, u.fat - 10); if (C.diet !== 'carn') u.sat = Math.min(100, u.sat + 10); }
-      if (t.owner === u.sp) { u.hp = Math.min(mh, u.hp + 1); u.fat = Math.max(0, u.fat - 5); }
-      if (u.sat >= 50 && !c) u.hp = Math.min(mh, u.hp + 1);
+      if (t.owner === u.sp) u.fat = Math.max(0, u.fat - 5);
+      if (u.stayed && !u.fought && u.sat >= 50 && !c && !(u.buff.krank > 0) && R(s) < .5) u.hp = Math.min(mh, u.hp + 1);
       if (clsKey(s, u) === 'baer' && se === 'winter' && t.loc === 'hoehle') u.hp = Math.min(mh, u.hp + 2);
       const age = ageOf(s, u);
       if (!C.legendary) {
@@ -1569,6 +1969,15 @@ const Game = (function () {
         if (age >= u.life && R(s) < .3) { u.cause = 'an Altersschwäche gestorben'; damage(s, u, 999, 'an Altersschwäche gestorben'); continue; }
       } else if (u.leaveAt && s.round >= u.leaveAt) { u.alive = false; addLog(s, `Der legendäre ${s.species[u.sp].name} zieht weiter und verschwindet im Nebel.`, 'info'); continue; }
       u.biomeR[t.biome] = (u.biomeR[t.biome] || 0) + 1;
+      if (t.loc === 'wasser') u.waterR = (u.waterR || 0) + 1;
+      if (!C.legendary && u.ageSt !== 'young') gainXp(s, u, 3);
+      if (u.alive && u.stage === 1 && u.lvl >= 5) tryEvolve(s, u);
+      if (u.ab && u.ab.length) {
+        const mates = live(s).filter(e => e.sp === u.sp && e.x === u.x && e.y === u.y);
+        if (AF(u, 'healAura')) mates.forEach(e => { e.hp = Math.min(maxHp(s, e), e.hp + AF(u, 'healAura')); });
+        if (AF(u, 'cureAura')) mates.forEach(e => { e.buff.krank = 0; e.buff.fluch = 0; e.inj = e.inj.filter(j => j.id !== 'wunde'); });
+        if (AF(u, 'roots') && u.stayed && t.loc === 'veg') { t.barren = 0; t.food = Math.max(t.food, 1); t.over = 0; }
+      }
       if (u.relic === 'heilmoos') u.hp = Math.min(mh, u.hp + 1);
       if (isNight(s) && t.loc !== 'hoehle') { u.nights = (u.nights || 0) + 1; if (u.nights >= 10) unlock(s, u, 'kindDerNacht'); }
       if ((u.meals || 0) >= 15) unlock(s, u, 'eisenmagen');
@@ -1623,7 +2032,7 @@ const Game = (function () {
     nashorn: { name: 'Unaufhaltsam', desc: 'Überstehe 2 Katastrophen mit mindestens 6 Tieren.', need: 2, cur: (s, sp) => s.species[sp].st.catas },
     baer: { name: 'Herr des Winters', desc: 'Überstehe 2 Winter mit mindestens 8 Tieren.', need: 2, cur: (s, sp) => s.species[sp].st.winters8 || 0 }
   };
-  function destinyOf(s, sp) { const D = DESTINY[s.species[sp].cls]; if (!D) return null; const cur = Math.min(D.need, D.cur(s, sp)); return { name: D.name, desc: D.desc, cur, need: D.need, pct: cur / D.need }; }
+  function destinyOf(s, sp) { const D = DESTINY[s.species[sp].cls]; if (!D) return null; const cur = Math.min(D.need, D.cur(s, sp)); const legend = live(s).some(u => u.sp === sp && u.stage === 2); return { name: D.name, desc: D.desc, cur, need: D.need, pct: cur / D.need, legend }; }
   function checkWin(s) {
     const p = pops(s);
     realSp(s).forEach((sp) => { const i = sp.id; if (sp.alive && p[i] === 0 && !s.eggs.some(e => e.sp === i)) { sp.alive = false; s.tiles.forEach(t => { if (t.owner === i) t.owner = null; }); addLog(s, `Die ${sp.plural} sind ausgestorben.`, i === 0 ? 'bad' : 'alert'); } });
@@ -1633,7 +2042,8 @@ const Game = (function () {
     for (const x of alive) {
       const d = destinyOf(s, x.id);
       if (d.pct >= .5 && !s.notes['half' + x.id]) { s.notes['half' + x.id] = 1; addLog(s, x.id === 0 ? `Deine Bestimmung ist zur Hälfte erfüllt: ${d.name}.` : `Die ${x.plural} nähern sich ihrer Bestimmung: ${d.name} (${d.cur}/${d.need}).`, x.id === 0 ? 'good' : 'alert'); if (x.id === 0) addSaga(s, `Die Bestimmung der ${x.plural} war zur Hälfte erfüllt: ${d.name}.`); }
-      if (d.cur >= d.need && s.round >= 30) { s.over = { win: x.id === 0, sp: x.id, type: `Bestimmung: ${d.name}`, text: `Die ${x.plural} haben ihre Bestimmung erfüllt. ${d.desc}` }; return; }
+      if (d.cur >= d.need && s.round >= 30 && !d.legend && !s.notes['nolegend' + x.id]) { s.notes['nolegend' + x.id] = 1; addLog(s, x.id === 0 ? `Die Bestimmung ist erfüllt, doch es fehlt eine Legendenform. Erst wenn eines deiner Tiere die Stufe 2 erreicht, ist der Sieg dein.` : `Die ${x.plural} haben ihre Bestimmung erfüllt. Ihnen fehlt nur noch eine Legendenform.`, x.id === 0 ? 'good' : 'alert'); }
+      if (d.cur >= d.need && s.round >= 30 && d.legend) { s.over = { win: x.id === 0, sp: x.id, type: `Bestimmung: ${d.name}`, text: `Die ${x.plural} haben ihre Bestimmung erfüllt. ${d.desc}` }; return; }
     }
     if (s.round >= 100) { const w = alive.slice().sort((a, b) => destinyOf(s, b.id).pct - destinyOf(s, a.id).pct || p[b.id] - p[a.id])[0]; s.over = { win: w.id === 0, sp: w.id, type: 'Zeitlimit', text: `Nach 100 Runden sind die ${w.plural} ihrer Bestimmung am nächsten gekommen.` }; }
   }
@@ -2174,17 +2584,41 @@ const Game = (function () {
     needsPhase(s);
     for (const sp of realSp(s)) if (sp.alive && !sp.player) {
       if (callReady(s, sp.id) && R(s) < .3) { const p = pops(s)[sp.id]; const id = p <= 3 ? 'verbergen' : sp.pers === 'kriegerisch' ? pick(s, ['halten', 'ausschwaermen']) : sp.pers === 'expansiv' ? 'ausschwaermen' : pick(s, ['sammeln', 'ausschwaermen']); setCall(s, sp.id, id); }
-      const u = byId(s, sp.mainId); if (u && u.alive) aiEvent(s, u);
+      const u = byId(s, sp.mainId); if (u && u.alive && (s.round - 1) % EV_EVERY === 0) aiEvent(s, u);
     }
     if (s.boonPick) { const bu = byId(s, s.boonPick.uid); if (!bu || !bu.alive) s.boonPick = null; else out.boonPick = s.boonPick; }
     const me = byId(s, s.species[0].mainId);
+    s.evWhy = null;
     if (me && me.alive) {
-      const pi = pickEvent(s, me);
-      s.pending = { ev: pi.ev, targetId: pi.target ? pi.target.id : null, chain: pi.chain || null, uid: me.id, step: 'thought' };
+      const due = eventDue(s, me);
+      if (due) {
+        const pi = pickEvent(s, me);
+        s.pending = { ev: pi.ev, targetId: pi.target ? pi.target.id : null, chain: pi.chain || null, uid: me.id, step: 'thought' };
+        s.lastEv = s.round; s.evWhy = due;
+      } else s.pending = null;
     } else s.pending = null;
     out.pending = s.pending;
     return out;
   }
+  function eventDue(s, u) {
+    if ((s.round - 1) % EV_EVERY === 0) return 'takt';
+    if (s.round - (s.lastEv === undefined ? -9 : s.lastEv) < 2) return null;
+    if (s.cata && s.cata.type === 'brand' && cataAt(s, u.x, u.y)) return 'feuer';
+    if (s.chains.some(ch => ch.kind === 'rivale' && ch.due <= s.round)) return 'rivale';
+    if (live(s).some(e => e.sp !== u.sp && e.x === u.x && e.y === u.y && !(e.buff.hide > 0))) return 'begegnung';
+    if (u.sat < 25 || u.fat > 80 || u.hp / maxHp(s, u) < .3) return 'not';
+    return null;
+  }
+  function nextEventIn(s) { const k = (s.round - 1) % EV_EVERY; return k === 0 ? 0 : EV_EVERY - k; }
+  function setGoal(s, x, y) { if (x === null || x === undefined) { s.goal = null; return null; } if (!inb(x, y)) return null; s.goal = { x, y }; return s.goal; }
+  function mentor(s, id) {
+    if (s.mentorR === s.round) return { ok: false, t: 'Diese Runde hast du schon gefördert.' };
+    const u = byId(s, id); if (!u || !u.alive || u.sp !== 0) return { ok: false, t: 'Dieses Tier lebt nicht mehr.' };
+    s.mentorR = s.round; gainXp(s, u, 3);
+    addLog(s, `Das Alphatier nimmt sich Zeit für ${u.name} (+3 EP).`, 'info');
+    return { ok: true, t: `${u.name} erhält 3 EP.` };
+  }
+  function setFav(s, id) { if (!s.fav) s.fav = {}; s.fav[0] = s.fav[0] === id ? null : id; return s.fav[0]; }
   function spawnBeast(s) {
     const sp = s.species[pick(s, [4, 5])];
     const free = s.tiles.filter(t => !s.units.some(u => u.alive && u.x === t.x && u.y === t.y) && t.loc !== 'wasser');
@@ -2259,7 +2693,7 @@ const Game = (function () {
     visibleSet, knowState, maxHp, mod, need, idx, tileAt, live, byId, clsOf, clsKey, pops, aiEvent, nm, has, chance, blockOf,
     CALLS, CALL_CD, FOCUS, LIFE, DESTINY, callOf, callReady, setCall, setHeir, destinyOf, sagaStory, isNight, ageOf, realSp, agePen,
     setFocus: (s, k) => { if (FOCUS[k]) s.focus[0] = k; },
-    TITLES, RELICS, BOONS, LEGACY, applyLegacy, boonOf, wildOf: (s, x, y) => s.wild[blockOf(x, y)]
+    TITLES, RELICS, BOONS, LEGACY, applyLegacy, boonOf, EVO, FORMS, ABIL, EVO_ROUND2, EV_EVERY, evoOptions, evoPreview, eventDue, nextEventIn, setGoal, mentor, setFav, formName, AF, isNightFn: isNight, wildOf: (s, x, y) => s.wild[blockOf(x, y)]
   };
 })();
 if (typeof module !== 'undefined') module.exports = Game;
@@ -2425,7 +2859,7 @@ const Scenes = (function () {
   'use strict';
   const G = Game;
   const $ = id => document.getElementById(id);
-  const SAVE = 'kotj-save-v5', META = 'kotj-meta', TESTS = 'kotj-tests';
+  const SAVE = 'kotj-save-v6', META = 'kotj-meta', TESTS = 'kotj-tests', PREFS = 'kotj-prefs';
   const reduce = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   const T = 28, MAP = T * 9;
   const wait = ms => new Promise(r => setTimeout(r, reduce ? Math.min(ms, 120) : ms));
@@ -2489,11 +2923,57 @@ const Scenes = (function () {
     ctx.fillStyle = OUT; ctx.fillRect(x, y, w + 1, 8); ctx.fillStyle = '#e2d9c8';
     [...str].forEach((ch, i) => DIG[ch].forEach((row, j) => [...row].forEach((c, k) => { if (c === 'X') ctx.fillRect(x + 1 + i * 4 + k, y + 1 + j, 1, 1); })));
   }
-  function spriteCanvas(cls, color, sc, outline) {
-    const c = document.createElement('canvas'); sc = sc || 3; c.width = 13 * sc; c.height = 10 * sc;
+  const FEAT = {};
+  function featCells(cls, color, f) {
+    const pat = SPR[cls] || SPR.wolf, cells = new Map(), key = (x, y) => x + ',' + y, dark = shade(color, .5);
+    let ex = 8, ey = 2;
+    pat.forEach((row, j) => [...row].forEach((ch, i) => { if (ch === '.') return; if (ch === 'e') { ex = i; ey = j; } cells.set(key(i, j), { c: ch === 'X' ? color : ch === 'd' ? dark : '#f3ead6', body: ch === 'X', eye: ch === 'e' }); }));
+    const has = (x, y) => cells.has(key(x, y)), add = (x, y, c) => { if (!has(x, y)) cells.set(key(x, y), { c, extra: true }); };
+    const top = x => { for (let y = 0; y < 8; y++) { const v = cells.get(key(x, y)); if (v && !v.extra) return y; } return 8; };
+    let minX = 11; cells.forEach((v, kk) => { const x = +kk.split(',')[0]; if (x < minX) minX = x; });
+    let tailY = 8; for (let y = 0; y < 8; y++) if (has(minX, y)) { tailY = y; break; }
+    const body = []; cells.forEach((v, kk) => { if (v.body) body.push(kk.split(',').map(Number)); });
+    if (f.plates) body.forEach(([x, y]) => { if ((x + y) % 2 === 0 && y > top(x)) cells.get(key(x, y)).c = f.plates; });
+    if (f.stripes) body.forEach(([x, y]) => { if (x % 3 === 1 && x < ex - 1) cells.get(key(x, y)).c = f.stripes; });
+    if (f.speckle) body.forEach(([x, y]) => { if ((x * 7 + y * 3) % 5 === 0) cells.get(key(x, y)).c = f.speckle; });
+    if (f.mane) for (let x = ex - 2; x <= ex; x++) for (let y = top(ex) - 1; y <= ey + 2; y++) { if (has(x, y)) continue; const nb = [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => { const c = cells.get(key(x + dx, y + dy)); return c && !c.extra; }); if (nb) add(x, y, f.mane); }
+    if (f.spikes) for (let x = minX + 1; x < ex - 1; x += 2) { const t = top(x); if (t < 8) add(x, t - 1, f.spikes); }
+    if (f.trees) [[minX + 1, f.trees], [minX + 3, '#4a7a3a'], [minX + 5, f.trees]].forEach(([x, c]) => { const t = top(x); if (t >= 8) return; add(x, t - 1, '#5e4128'); add(x, t - 2, c); add(x - 1, t - 2, c); add(x + 1, t - 2, c); add(x, t - 3, c); });
+    if (f.shrooms) [minX + 1, minX + 4].forEach(x => { const t = top(x); if (t >= 8) return; add(x, t - 1, '#efe6d2'); add(x - 1, t - 2, f.shrooms); add(x, t - 2, f.shrooms); add(x + 1, t - 2, f.shrooms); });
+    if (f.wings) { const mx = Math.round((minX + ex) / 2) - 1, my = top(mx) - 1; [[0, 0], [-1, 0], [1, 0], [0, -1], [-1, -1], [-2, -1], [-1, -2], [-2, -2], [-3, -2], [-2, -3], [-3, -3], [-4, -3], [-3, -4]].forEach(([dx, dy], i) => add(mx + dx, my + dy, i % 3 === 2 ? shade(f.wings, .7) : f.wings)); }
+    if (f.horns) { const t = top(ex); add(ex - 1, t - 1, f.horns); add(ex - 1, t - 2, f.horns); add(ex, t - 3, f.horns); add(ex + 1, t - 1, f.horns); add(ex + 1, t - 2, f.horns); }
+    if (f.unihorn) { let fx = ex; for (let x = 10; x >= ex; x--) if (has(x, ey) || has(x, ey - 1)) { fx = x; break; } add(fx + 1, ey - 2, f.unihorn); add(fx + 1, ey - 1, f.unihorn); add(fx + 2, ey - 3, f.unihorn); add(fx + 2, ey - 4, f.unihorn); }
+    if (f.flame) { const [a, b] = f.flame; add(minX - 1, tailY, a); add(minX - 1, tailY - 1, b); add(minX - 2, tailY - 1, a); add(minX - 2, tailY - 2, b); add(minX - 1, tailY - 2, a); add(minX - 2, tailY - 3, a); }
+    if (f.sting) { add(minX - 1, tailY, f.sting); add(minX - 1, tailY - 1, f.sting); add(minX - 1, tailY - 2, f.sting); add(minX, tailY - 3, f.sting); add(minX + 1, tailY - 3, f.sting); add(minX + 2, tailY - 2, '#e8e0d0'); }
+    if (f.heads) {
+      const head = []; cells.forEach((v, kk) => { const [x, y] = kk.split(',').map(Number); if (!v.extra && x >= ex - 1 && y >= ey - 2 && y <= ey + 1) head.push([x, y, v.c]); });
+      (f.heads === 2 ? [[-2, -3]] : [[-2, -3], [-4, -1]]).forEach(([dx, dy]) => { head.forEach(([x, y, c]) => add(x + dx, y + dy, c)); add(ex - 1 + dx, ey + 2 + dy, color); add(ex - 1 + dx, ey + 1 + dy, color); });
+    }
+    if (f.tailhead) { add(minX - 1, tailY, color); add(minX - 2, tailY - 1, color); add(minX - 1, tailY - 1, color); add(minX - 2, tailY - 2, color); add(minX - 3, tailY - 2, color); cells.set(key(minX - 2, tailY - 1), { c: f.glow || '#f3ead6', extra: true }); }
+    if (f.glow) cells.forEach(v => { if (v.eye) v.c = f.glow; });
+    const out = []; cells.forEach((v, kk) => { const [x, y] = kk.split(',').map(Number); out.push([x, y, v.c]); });
+    return { cells: out, aura: f.aura || null };
+  }
+  function drawFormSprite(ctx, cls, form, x, y, color, outline, sc, flip) {
+    const F = G.FORMS[form]; sc = sc || 1;
+    const k = cls + '|' + color + '|' + form; const g = FEAT[k] || (FEAT[k] = featCells(cls, color, F.f || {}));
+    const px = i => flip ? (10 - i) : i;
+    const ol = outline && outline !== OUT ? outline : (g.aura || outline);
+    if (ol) { ctx.fillStyle = ol; g.cells.forEach(([i, j]) => ctx.fillRect(x + (px(i) - 1) * sc, y + (j - 1) * sc, sc * 3, sc * 3)); }
+    g.cells.forEach(([i, j, c]) => { ctx.fillStyle = c; ctx.fillRect(x + px(i) * sc, y + j * sc, sc, sc); });
+  }
+  function spriteCanvas(cls, color, sc, outline, form) {
+    const c = document.createElement('canvas'); sc = sc || 3;
+    if (form && G.FORMS[form]) {
+      c.width = 19 * sc; c.height = 14 * sc; c.style.width = (19 * sc) + 'px'; c.style.height = (14 * sc) + 'px';
+      drawFormSprite(c.getContext('2d'), cls, form, 4 * sc, 5 * sc, color, outline || OUT, sc); return c;
+    }
+    c.width = 13 * sc; c.height = 10 * sc;
     c.style.width = (13 * sc) + 'px'; c.style.height = (10 * sc) + 'px';
     drawSprite(c.getContext('2d'), cls, sc, sc, color, outline || OUT, sc); return c;
   }
+  const formCol = u => u.form && G.FORMS[u.form] ? G.FORMS[u.form].c : s.species[u.sp].color;
+  const formLbl = u => u.form && G.FORMS[u.form] ? G.FORMS[u.form].n : s.species[u.sp].name;
   function iconCanvas(key) {
     const c = document.createElement('canvas'); c.width = c.height = 16; c.style.width = c.style.height = '16px'; const ctx = c.getContext('2d');
     ctx.fillStyle = key === 'wasser' ? WATER_COL.def[0] : BIOME_COL.steppe[0]; ctx.fillRect(0, 0, 16, 16);
@@ -2545,7 +3025,7 @@ const Scenes = (function () {
     const t = tele(); if (t.saved) return t.gid;
     t.saved = true;
     const d = G.destinyOf(s, 0);
-    const rec = { gid: t.gid, ver: t.ver, date: new Date(t.t0).toISOString(), cls: t.cls, beh: t.beh, rounds: s.round, result, end: s.over ? s.over.type : 'abgebrochen', durMin: +((Date.now() - t.t0) / 60000).toFixed(1), rt: t.rt, evs: t.evs, fights: t.fights, calls: t.calls, deaths: (s.losses || []).map(l => ({ r: l.r, cause: l.cause, main: l.main, young: l.young })), alphas: s.ancestors.length + 1, destiny: Math.round(d.pct * 100), popEnd: G.live(s).filter(u => u.sp === 0).length, survey: null };
+    const rec = { gid: t.gid, ver: t.ver, date: new Date(t.t0).toISOString(), cls: t.cls, beh: t.beh, rounds: s.round, result, end: s.over ? s.over.type : 'abgebrochen', durMin: +((Date.now() - t.t0) / 60000).toFixed(1), rt: t.rt, evs: t.evs, fights: t.fights, calls: t.calls, deaths: (s.losses || []).map(l => ({ r: l.r, cause: l.cause, main: l.main, young: l.young })), alphas: s.ancestors.length + 1, destiny: Math.round(d.pct * 100), evos: (s.evos || []).filter(e => e.sp === 0 && e.how === 'grow').map(e => ({ r: e.r, form: e.form })), auto: !!prefs.auto, popEnd: G.live(s).filter(u => u.sp === 0).length, survey: null };
     const a = loadTests(); a.push(rec); saveTests(a); return t.gid;
   }
   const KQ = [['k1', 'Wie spannend war diese Partie?'], ['k2', 'Wie gut hast du verstanden, warum sich deine Tiere so bewegt haben?'], ['k3', 'Wie stark hattest du das Gefühl, deine Art zu prägen?'], ['k4', 'Wie gut hast du mitbekommen, was mit deinen Tieren passiert (Tod, Geburt, Kämpfe)?'], ['k5', 'Wie abwechslungsreich waren die Ereignisse?'], ['k6', 'Wie gern würdest du jetzt direkt noch eine Partie spielen?']];
@@ -2629,6 +3109,35 @@ const Scenes = (function () {
       const b = $('tClear');
       if (!b.dataset.sure) { b.dataset.sure = '1'; b.textContent = 'Wirklich alle Testdaten löschen?'; return; }
       saveTests([]); renderTests();
+    });
+  }
+  /* ---------- Entwicklungen anzeigen ---------- */
+  let evoSeen = 0;
+  async function announceEvos() {
+    if (!s || !s.evos) return;
+    const fresh = s.evos.slice(evoSeen); evoSeen = s.evos.length;
+    for (const e of fresh) {
+      const u = G.byId(s, e.id), F = G.FORMS[e.form];
+      if (!u || !F || e.how !== 'grow') continue;
+      if (e.sp === 0 && u.alive && u.main) await openEvolve(u, e);
+      else if (e.sp === 0) { snd('level'); toast(`✦ ${u.name} hat sich entwickelt: ${e.from} → ${F.n} (${G.ABIL[F.ab].name}).`, 'evo'); }
+      else if (F.stage === 2) { snd('roar'); toast(`⚠ Bei den ${s.species[e.sp].plural} ist eine Legende erwacht: ${F.n}. ${G.ABIL[F.ab].name}: ${G.ABIL[F.ab].desc}`, 'warn'); }
+    }
+  }
+  function openEvolve(u, e) {
+    return new Promise(res => {
+      const F = G.FORMS[e.form], prevForm = F.stage === 2 ? F.parent : null;
+      snd('unlock'); busy = true;
+      openModal(`<p class="eyebrow">Entwicklung · Stufe ${F.stage}</p><h2>${esc(u.name)} wird ${F.stage === 2 ? 'zur Legende' : 'stärker'}</h2>
+        <div class="evo-show"><div class="evo-from"></div><div class="evo-arrow">→</div><div class="evo-to"></div></div>
+        <p class="evo-names"><span>${esc(e.from)}</span> wird zu <b>${esc(F.n)}</b></p>
+        ${F.o ? `<p class="origin">${esc(F.o)}</p>` : ''}
+        <div class="abil-box"><b>Neue Fähigkeit: ${esc(G.ABIL[F.ab].name)}</b>${esc(G.ABIL[F.ab].desc)}</div>
+        <p class="intro">Der Weg dorthin: ${esc(F.way)}. ${esc(u.name)} beginnt wieder auf Level 1. Werte, Eigenschaften, Titel und Lebenspunkte bleiben. ${F.stage === 1 ? `Mit Level 5 und ab Runde ${G.EVO_ROUND2} folgt die Legendenform.` : 'Junge erben die Form mit 50 % Chance, bei zwei gleichen Eltern mit 75 %.'}</p>
+        <button class="btn primary" id="evoOk">Weiter</button>`, 'Entwicklung', 'evo');
+      $('sheet').querySelector('.evo-from').appendChild(spriteCanvas(s.species[0].cls, prevForm ? G.FORMS[prevForm].c : s.species[0].color, 5, OUT, prevForm || undefined));
+      $('sheet').querySelector('.evo-to').appendChild(spriteCanvas(s.species[0].cls, F.c, 6, '#fff4dc', e.form));
+      $('evoOk').addEventListener('click', () => { closeModal(); busy = false; render(); res(); });
     });
   }
   /* ---------- Meldungen ---------- */
@@ -2723,20 +3232,21 @@ const Scenes = (function () {
     behs.forEach(k => { const b = document.createElement('button'); b.type = 'button'; b.className = 'beh-btn'; b.textContent = k ? G.BEHAV[k].name : 'Zufall'; b.setAttribute('aria-pressed', k === chosenBeh ? 'true' : 'false'); b.addEventListener('click', () => { snd('tap'); chosenBeh = k; bg.querySelectorAll('.beh-btn').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false')); showDesc(); }); bg.appendChild(b); });
     showDesc();
     const saved = loadSaved();
-    $('btnContinue').hidden = !(saved && saved.v === 5 && !saved.over);
+    $('btnContinue').hidden = !(saved && saved.v === 6 && !saved.over);
     $('unlockAll').hidden = Object.keys(UNLOCK_RULES).every(isUnlocked);
     renderTests();
   }
   function enterGame() {
     $('start').hidden = true; $('game').hidden = false;
     const m = me(); sel = m ? { x: m.x, y: m.y } : { x: 4, y: 4 };
-    if (!s.losses) s.losses = []; lossSeen = s.losses.length; tele();
+    if (!s.losses) s.losses = []; lossSeen = s.losses.length; evoSeen = (s.evos || []).length; tele();
     $('tabbar').hidden = false; logSeenR = s.round - 1; syncLegend(); setPane('map', true);
     renderLegend(); sizeMap(); render(); window.scrollTo(0, 0);
     if (s.boonPick) openLegacy();
     else if (s.heirPick) openHeir();
     else if (s.pending) openEvent();
     else if (s.fight) openFight(afterDecisionFight);
+    renderPlay(); scheduleAuto(1200);
   }
 
   /* ---------- Karte ---------- */
@@ -2793,7 +3303,9 @@ const Scenes = (function () {
         const sp = s.species[u.sp];
         if (sp.neutral) { ctx.fillStyle = 'rgba(224,90,62,.45)'; ctx.fillRect(px - 2, py - 2, 15, 12); }
         if (u.sp === 0) { ctx.fillStyle = 'rgba(224,168,74,.28)'; ctx.fillRect(px - 1, py + 8, 13, 2); }
-        drawSprite(ctx, sp.cls, px, py, sp.color, u.main && u.sp === 0 ? '#fff4dc' : OUT);
+        if (u.form && G.FORMS[u.form]) drawFormSprite(ctx, sp.cls, u.form, px, py, sp.color, u.main && u.sp === 0 ? '#fff4dc' : OUT, 1);
+        else drawSprite(ctx, sp.cls, px, py, sp.color, u.main && u.sp === 0 ? '#fff4dc' : OUT);
+        if (u.stage === 2) { ctx.fillStyle = '#e8b866'; ctx.fillRect(px + 5, py - 3, 1, 1); ctx.fillRect(px + 4, py - 2, 3, 1); ctx.fillRect(px + 5, py - 1, 1, 1); }
         if (u.buff.krank > 0) { ctx.fillStyle = '#9bc24a'; ctx.fillRect(px + 10, py - 1, 2, 2); }
       });
       if (list.length > 4 && st[k] === 'vis') { const X = (k % 9) * T, Y = Math.floor(k / 9) * T; drawCount(ctx, X + 15, Y + 18, list.length - 3); }
@@ -2829,6 +3341,11 @@ const Scenes = (function () {
       [[0, 0], [T - 6, 0], [0, T - 2], [T - 6, T - 2]].forEach(([dx, dy]) => ctx.fillRect(X + dx, Y + dy, 6, 2));
       [[0, 0], [T - 2, 0], [0, T - 6], [T - 2, T - 6]].forEach(([dx, dy]) => ctx.fillRect(X + dx, Y + dy, 2, 6));
     }
+    if (s.goal && !anim) {
+      const X = s.goal.x * T, Y = s.goal.y * T;
+      ctx.save(); ctx.strokeStyle = '#e8b866'; ctx.setLineDash([2, 2]); ctx.strokeRect(X + 2.5, Y + 2.5, T - 5, T - 5); ctx.restore();
+      ctx.fillStyle = '#060507'; ctx.fillRect(X + 19, Y + 3, 7, 11); ctx.fillStyle = '#e8b866'; ctx.fillRect(X + 20, Y + 4, 1, 9); ctx.fillRect(X + 21, Y + 4, 4, 2); ctx.fillRect(X + 21, Y + 6, 3, 2);
+    }
     if (sel && !(m && sel.x === m.x && sel.y === m.y)) { ctx.strokeStyle = '#e2d9c8'; ctx.lineWidth = 1; ctx.strokeRect(sel.x * T + .5, sel.y * T + .5, T - 1, T - 1); }
   }
   function animateMoves(moves) {
@@ -2858,7 +3375,7 @@ const Scenes = (function () {
     sc.appendChild(seasonCanvas(se.id, false)); sc.appendChild(seasonCanvas(se.id, night ? true : false));
     sc.append(`${se.name} · ${night ? 'Nacht' : 'Tag'} · noch ${left} ${left === 1 ? 'Runde' : 'Runden'}${s.cata ? ' · ' + G.CATA[s.cata.type].name : ''}`);
     const d = G.destinyOf(s, 0), dc = $('destinyChip');
-    dc.innerHTML = `<span class="dl">Bestimmung</span> <b>${esc(d.name)}</b> <span class="dbar"><i style="width:${d.pct * 100}%"></i></span> <span class="num">${d.cur}/${d.need}</span>`;
+    dc.innerHTML = `<span class="dl">Bestimmung</span> <b>${esc(d.name)}</b> <span class="dbar"><i style="width:${d.pct * 100}%"></i></span> <span class="num">${d.cur}/${d.need}</span> <span class="leg ${d.legend ? 'on' : ''}" title="${d.legend ? 'Eine Legendenform lebt. Der Sieg ist möglich.' : 'Für den Sieg braucht deine Art eine Legendenform (Stufe 2).'}">${d.legend ? '✦ Legende' : '✦ fehlt'}</span>`;
     $('btnSound').textContent = Sound.isOn() ? 'Ton an' : 'Ton aus'; $('btnSound').setAttribute('aria-pressed', Sound.isOn() ? 'true' : 'false');
     const p = G.pops(s), strip = $('speciesStrip'); strip.innerHTML = '';
     G.realSp(s).forEach(sp => {
@@ -2866,7 +3383,9 @@ const Scenes = (function () {
       const el = document.createElement('div'); el.className = 'sp-chip' + (sp.player ? ' me' : '') + (sp.alive ? '' : ' dead');
       el.title = `${sp.plural}${sp.player ? ' (du)' : ' · ' + G.PERS[sp.pers]}: ${p[sp.id]} Tiere, ${G.territoryCount(s, sp.id)} Reviere. Bestimmung „${dd.name}“: ${dd.cur}/${dd.need}`;
       el.appendChild(spriteCanvas(sp.cls, sp.color, 2));
-      const lbl = document.createElement('span'); lbl.innerHTML = `${sp.player ? 'Du' : sp.name} <b>${p[sp.id]}</b> <span class="terr">▣${G.territoryCount(s, sp.id)}</span>`; el.appendChild(lbl);
+      const stg = Math.max(0, ...G.live(s).filter(u => u.sp === sp.id).map(u => u.stage || 0));
+      const lbl = document.createElement('span'); lbl.innerHTML = `${sp.player ? 'Du' : sp.name} <b>${p[sp.id]}</b> <span class="terr">▣${G.territoryCount(s, sp.id)}</span>${stg ? ` <span class="stg s${stg}" title="${stg === 2 ? 'Hat eine Legendenform' : 'Hat entwickelte Tiere'}">${stg === 2 ? '✦✦' : '✦'}</span>` : ''}`; el.appendChild(lbl);
+      if (stg) el.title += stg === 2 ? ' · Legendenform vorhanden' : ' · entwickelte Tiere';
       const pi = document.createElement('span'); pi.className = 'pips'; pi.style.color = sp.color; const lead = Math.round(dd.pct * 5); pi.innerHTML = [0, 1, 2, 3, 4].map(i => `<i class="${i < lead ? 'on' : ''}"></i>`).join(''); el.appendChild(pi);
       strip.appendChild(el);
     });
@@ -2891,16 +3410,18 @@ const Scenes = (function () {
       <div class="stats4">${G.STATS.map(k => { const e = u[k] + (pen[k] || 0), m = G.mod(e); return `<div class="stat" title="${G.STATN[k]}${pen[k] ? ' (verändert durch Alter oder Verletzung)' : ''}"><div class="k">${G.STATK[k]}</div><div class="v${pen[k] < 0 ? ' pen' : ''}">${e}</div><div class="m">${m >= 0 ? '+' : '−'}${Math.abs(m)}</div></div>`; }).join('')}</div>
       <div class="sect why-sect"><div class="lbl">Warum hier? · ${esc(u.mind || 'gerade angekommen')}</div>${u.why && u.why.length ? `<ul class="why">${u.why.map(w => `<li>${esc(w)}</li>`).join('')}</ul>` : '<p class="muted" style="font-size:14px;margin:0">Noch keine Bewegung. Nach jeder Runde steht hier, warum dein Alphatier zieht oder bleibt.</p>'}<p class="why-note">Die gestrichelte Linie auf der Karte zeigt seinen Weg der letzten 5 Felder.</p></div>
       ${(() => { const th = G.threatsNear(s).filter(t => t.main); return th.length ? `<div class="sect threat-sect"><div class="lbl">Gefahr</div>${th.map(t => `<p>⚠ ${esc(t.foe)}${t.hungry ? ', hungrig,' : ''} ${t.dist === 0 ? 'steht auf deinem Feld' : 'ist direkt neben dir'}. ${t.legend ? 'Eine Legende. Weiche aus oder stelle dich.' : 'Wird es angreifen, beginnt eine Hetzjagd oder ein Kampf.'}</p>`).join('')}</div>` : ''; })()}
+      <div class="sect evo-sect"><div class="lbl">Entwicklung</div>${evoHtml(u)}</div>
       <div class="sect" id="mcHonorsSect"><div class="lbl">Titel, Relikt, Vermächtnis</div><div class="chips" id="mcHonors"></div></div>
       <div class="sect"><div class="lbl">Eigenschaften</div><div class="chips" id="mcTraits"></div></div>
       <div class="sect"><div class="lbl">Zustände</div><div class="chips" id="mcCond"></div></div>`;
-    const head = el.querySelector('.head'); head.appendChild(spriteCanvas(s.species[0].cls, s.species[0].color, 4, '#fff4dc'));
+    const head = el.querySelector('.head'); head.appendChild(spriteCanvas(s.species[0].cls, formCol(u), 4, '#fff4dc', u.form));
     const who = document.createElement('div'); who.className = 'who';
     const ttl = (u.titles || []).length ? `<span class="title-tag">${esc(topTitle(u))}</span>` : '';
-    who.innerHTML = `<div class="nm"><span class="crown">♛</span><span id="mcName">${esc(u.name)}</span>${ttl}<button class="icon-btn" id="mcRename" type="button">umbenennen</button></div><div class="sub">${C.name} · Level ${u.lvl} · Generation ${u.gen || 1} · ${G.BEHAV[u.beh].name} · ${G.BIOMES[t.biome].name}, ${G.LOCS[t.loc]}</div>`;
+    who.innerHTML = `<div class="nm"><span class="crown">♛</span><span id="mcName">${esc(u.name)}</span>${ttl}<button class="icon-btn" id="mcRename" type="button">umbenennen</button></div><div class="sub">${u.form ? `<b class="form-n">${esc(G.FORMS[u.form].n)}</b> · Stufe ${u.stage} · ` : `${C.name} · `}Level ${u.lvl} · Generation ${u.gen || 1} · ${G.BEHAV[u.beh].name} · ${G.BIOMES[t.biome].name}, ${G.LOCS[t.loc]}</div>`;
     head.appendChild(who);
     $('mcRename').addEventListener('click', () => startRename(u));
     const tr = $('mcTraits');
+    (u.ab || []).forEach(k => tr.appendChild(infoChip('✦ ' + G.ABIL[k].name, 'legacy', 'Fähigkeit: ' + G.ABIL[k].name, G.ABIL[k].desc)));
     tr.appendChild(infoChip(C.trait, 'gold', C.trait, C.traitD));
     tr.appendChild(infoChip(G.BEHAV[u.beh].name, '', 'Verhalten: ' + G.BEHAV[u.beh].name, G.BEHAV[u.beh].desc));
     u.traits.forEach(k => { const d = G.LEARN[k] || G.UNLOCK[k]; if (d) tr.appendChild(infoChip(d.name, 'good', d.name, d.desc)); });
@@ -2912,6 +3433,16 @@ const Scenes = (function () {
     const cd = $('mcCond'); const conds = G.conditions(s, u);
     if (!conds.length) cd.innerHTML = '<span class="muted" style="font-size:14px">Keine besonderen Zustände.</span>';
     conds.forEach(c => cd.appendChild(infoChip(c.t, c.k, c.t, c.d)));
+  }
+  function evoHtml(u) {
+    if (u.stage === 2) return `<p class="evo-t">Legendenform erreicht: <b>${esc(G.FORMS[u.form].n)}</b>. ${esc(G.FORMS[u.form].o)}.</p>`;
+    const pv = G.evoPreview(s, u); if (!pv || !pv.length) return '<p class="evo-t muted">Keine weitere Entwicklung.</p>';
+    const [a, b] = pv;
+    const late = u.stage === 1 && s.round < G.EVO_ROUND2;
+    const pct = Math.min(1, (u.lvl - 1 + u.xp / G.need(u.lvl)) / 4);
+    return `<div class="evo-bar"><i style="width:${Math.round(pct * 100)}%"></i></div>
+      <p class="evo-t">${u.stage ? 'Legendenform' : 'Klasse'} ab Level 5${late ? ` und ab Runde ${G.EVO_ROUND2}` : ''}. Level ${u.lvl} von 5.</p>
+      <p class="evo-t">Der Weg führt gerade zu <b>${esc(a.o.n)}</b> (${esc(a.o.way)})${b ? `, sonst zu ${esc(b.o.n)} (${esc(b.o.way)})` : ''}.</p>`;
   }
   function startRename(u) {
     const box = $('mcName').parentElement;
@@ -2945,6 +3476,12 @@ const Scenes = (function () {
     more.appendChild(infoChip(B.name, '', B.name, B.desc)); more.appendChild(infoChip(G.LOCS[t.loc], '', G.LOCS[t.loc], G.LOC_DESC[t.loc]));
     more.appendChild(infoChip('Wildbestand', '', 'Wildbestand', 'Jedes Biom hat einen Wildbestand von 0 bis 10. Jedes gefressene Kleintier senkt ihn, er erholt sich langsam von selbst. Bei fast ausgerottetem Wild finden Raubtiere kaum noch Kleintiere. Wird Vegetation dreimal leergefressen, verödet sie für 7 Runden.'));
     el.appendChild(more);
+    { const m = me(); const isMe = m && m.x === t.x && m.y === t.y; const isGoal = s.goal && s.goal.x === t.x && s.goal.y === t.y;
+      const act = document.createElement('div'); act.className = 'tile-act';
+      if (m && m.alive && !isMe && !isGoal) act.innerHTML = `<button class="btn small" id="goalSet" type="button">⚑ Hierhin ziehen</button>`;
+      if (s.goal) act.innerHTML += `<button class="btn small ghost" id="goalClr" type="button">Ziel aufheben</button>`;
+      if (act.innerHTML) { el.appendChild(act); const gs = $('goalSet'); if (gs) gs.addEventListener('click', () => { G.setGoal(s, t.x, t.y); snd('tap'); save(); toast(`Ziel gesetzt. ${m.name} zieht jetzt bevorzugt in diese Richtung.`, ''); render(); }); const gc = $('goalClr'); if (gc) gc.addEventListener('click', () => { G.setGoal(s, null); snd('tap'); save(); render(); }); }
+    }
     if (st !== 'vis') return;
     const k = G.idx(t.x, t.y);
     const us = s.units.filter(u => u.alive && u.x === t.x && u.y === t.y && (u.sp === 0 || !(u.buff.hide > 0)));
@@ -2955,10 +3492,10 @@ const Scenes = (function () {
     us.sort((a, b) => a.sp - b.sp || b.lvl - a.lvl).forEach(u => {
       const sp = s.species[u.sp], mh = G.maxHp(s, u);
       const li = document.createElement('li'); li.className = 'unit-row';
-      li.appendChild(spriteCanvas(sp.cls, sp.color, 2, u.main && u.sp === 0 ? '#fff4dc' : undefined));
+      li.appendChild(spriteCanvas(sp.cls, sp.color, 2, u.main && u.sp === 0 ? '#fff4dc' : undefined, u.form));
       const ln = document.createElement('div'); ln.className = 'ln';
       const rel = u.sp === 0 ? '' : sp.neutral ? ' · Legendär' : (G.clsOf(s, u).hunter || u.beh === 'aggressiv') ? ' · Gefahr' : ' · Rivale';
-      ln.innerHTML = `${u.main ? '♛ ' : ''}${sp.player ? '' : sp.name + ' '}${esc(u.name)} · Lv ${u.lvl}<small>${G.BEHAV[u.beh].name} · ${u.mind || 'ruhig'}${rel}${u.buff.krank > 0 ? ' · krank' : ''}${u.inj.length ? ' · verletzt' : ''}${u.sp === 0 ? ` · ${ageTxt(u)}, Gen ${u.gen || 1}` : ''}</small>`;
+      ln.innerHTML = `${u.main ? '♛ ' : ''}${sp.player ? '' : esc(formLbl(u)) + ' '}${esc(u.name)} · Lv ${u.lvl}${sp.player && u.form ? ` <span class="form-tag s${u.stage}">${esc(G.FORMS[u.form].n)}</span>` : ''}<small>${G.BEHAV[u.beh].name} · ${u.mind || 'ruhig'}${rel}${u.buff.krank > 0 ? ' · krank' : ''}${u.inj.length ? ' · verletzt' : ''}${u.sp === 0 ? ` · ${ageTxt(u)}, Gen ${u.gen || 1}` : ''}</small>`;
       li.appendChild(ln);
       const bar = document.createElement('span'); bar.className = 'minibar'; bar.title = `${u.hp}/${mh} LP`; bar.innerHTML = `<i style="width:${u.hp / mh * 100}%;background:${u.hp / mh < .35 ? 'var(--blood)' : 'var(--moss)'}"></i>`; li.appendChild(bar);
       ul.appendChild(li);
@@ -2984,15 +3521,29 @@ const Scenes = (function () {
   function renderRoster() {
     const el = $('roster'); el.innerHTML = '';
     $('focusSel').value = s.focus[0] || 'ausgewogen';
-    const us = G.live(s).filter(u => u.sp === 0).sort((a, b) => (b.main ? 1 : 0) - (a.main ? 1 : 0) || b.lvl - a.lvl || b.xp - a.xp);
+    const us = G.live(s).filter(u => u.sp === 0).sort((a, b) => (b.main ? 1 : 0) - (a.main ? 1 : 0) || (b.stage || 0) - (a.stage || 0) || b.lvl - a.lvl || b.xp - a.xp);
+    const used = s.mentorR === s.round, fav = s.fav && s.fav[0];
+    const help = document.createElement('p'); help.className = 'roster-help';
+    help.textContent = used ? 'Diese Runde hast du schon gefördert. Zuchtwahl geht jederzeit.' : 'Fördern: +3 EP für ein Tier, einmal pro Runde. Zucht ★: Das Tier paart sich bevorzugt, seine Jungen erben seine Form öfter.';
+    el.appendChild(help);
     for (const u of us) {
+      const row = document.createElement('div'); row.className = 'roster-item' + (u.id === fav ? ' fav' : '');
       const b = document.createElement('button'); b.className = 'roster-row'; b.type = 'button';
-      b.appendChild(spriteCanvas(s.species[0].cls, s.species[0].color, 2, u.main ? '#fff4dc' : undefined));
-      const t = G.tileAt(s, u.x, u.y);
-      const m = document.createElement('span'); m.innerHTML = `${u.main ? '♛ ' : ''}${esc(u.name)}${(u.titles || []).length ? ` <span class="title-tag sm">${esc(topTitle(u))}</span>` : ''}${u.relic ? ' <span class="relic-dot" title="' + esc(G.RELICS[u.relic].name) + '">◆</span>' : ''} <small>· Gen ${u.gen || 1} · ${ageTxt(u)} · ${G.BEHAV[u.beh].name} · ${u.mind || 'ruhig'}${u.buff.krank > 0 ? ' · krank' : ''}${u.inj.length ? ' · verletzt' : ''}</small>`; b.appendChild(m);
-      const r = document.createElement('small'); r.textContent = `Lv ${u.lvl} · ${u.hp}/${G.maxHp(s, u)} LP · ST ${u.st} GE ${u.ge} KO ${u.ko} WE ${u.we}`; b.appendChild(r);
+      b.appendChild(spriteCanvas(s.species[0].cls, s.species[0].color, 2, u.main ? '#fff4dc' : undefined, u.form));
+      const m = document.createElement('span'); m.innerHTML = `${u.main ? '♛ ' : ''}${esc(u.name)}${u.form ? ` <span class="form-tag s${u.stage}">${esc(G.FORMS[u.form].n)}</span>` : ''}${(u.titles || []).length ? ` <span class="title-tag sm">${esc(topTitle(u))}</span>` : ''}${u.relic ? ' <span class="relic-dot" title="' + esc(G.RELICS[u.relic].name) + '">◆</span>' : ''} <small>· Gen ${u.gen || 1} · ${ageTxt(u)} · ${G.BEHAV[u.beh].name} · ${u.mind || 'ruhig'}${u.buff.krank > 0 ? ' · krank' : ''}${u.inj.length ? ' · verletzt' : ''}</small>`; b.appendChild(m);
+      const r = document.createElement('small'); r.textContent = `Lv ${u.lvl}${u.stage < 2 ? '/5' : ''} · ${u.hp}/${G.maxHp(s, u)} LP · ST ${u.st} GE ${u.ge} KO ${u.ko} WE ${u.we}`; b.appendChild(r);
       b.addEventListener('click', () => { sel = { x: u.x, y: u.y }; if (mobile()) setPane('map', true); drawMap(); renderTile(); $('tileInfo').scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' }); });
-      el.appendChild(b);
+      row.appendChild(b);
+      const acts = document.createElement('div'); acts.className = 'roster-acts';
+      if (!u.main) {
+        const mb = document.createElement('button'); mb.type = 'button'; mb.className = 'mini'; mb.textContent = 'Fördern'; mb.disabled = used || !!s.over; mb.title = 'Das Alphatier bringt diesem Tier etwas bei: +3 EP. Einmal pro Runde.';
+        mb.addEventListener('click', () => { const r2 = G.mentor(s, u.id); snd(r2.ok ? 'level' : 'fail'); toast(r2.t, r2.ok ? '' : 'warn'); save(); render(); announceEvos(); });
+        const fb = document.createElement('button'); fb.type = 'button'; fb.className = 'mini star'; fb.textContent = u.id === fav ? '★ Zucht' : '☆ Zucht'; fb.setAttribute('aria-pressed', u.id === fav ? 'true' : 'false'); fb.title = 'Zuchtwahl: paart sich bevorzugt, Junge erben seine Form zu 25 % öfter.';
+        fb.addEventListener('click', () => { G.setFav(s, u.id); snd('tap'); save(); renderRoster(); });
+        acts.appendChild(mb); acts.appendChild(fb);
+      } else acts.innerHTML = '<span class="muted" style="font-size:13px">Alphatier</span>';
+      row.appendChild(acts);
+      el.appendChild(row);
     }
     if (!us.length) el.innerHTML = '<p class="muted">Niemand mehr übrig.</p>';
   }
@@ -3001,7 +3552,7 @@ const Scenes = (function () {
     const t = G.tileAt(s, u.x, u.y);
     try { Sound.ambience({ biome: t.biome, season: G.season(s).id, night: G.isNight(s), cata: s.cata ? s.cata.type : null, nearCata: s.cata ? s.tiles.some(x => G.cataAt(s, x.x, x.y) && Math.max(Math.abs(x.x - u.x), Math.abs(x.y - u.y)) <= 2) : false }); } catch (e) { /* egal */ }
   }
-  function render() { if (!s) return; renderTop(); drawMap(); renderMain(); renderQuick(); renderCalls(); renderTile(); renderLog(); renderRoster(); renderTabs(); $('btnNext').disabled = busy || !!s.over; updateAmbience(); }
+  function render() { if (!s) return; renderTop(); drawMap(); renderMain(); renderQuick(); renderCalls(); renderTile(); renderLog(); renderRoster(); renderTabs(); $('btnNext').disabled = busy || !!s.over; renderPlay(); updateAmbience(); }
 
   /* ---------- Modal ---------- */
   function openModal(html, label, cls, scene) {
@@ -3041,7 +3592,7 @@ const Scenes = (function () {
     const bad = G.conditions(s, u).filter(c => c.k === 'bad').map(c => `<span class="chip bad">${esc(c.t)}</span>`).join('');
     return `<div class="status-strip"><div class="ss-name">♛ ${esc(u.name)} <span class="muted">Lv ${u.lvl}</span></div>${bar('LP', u.hp, mh, u.hp / mh < .35 ? 'var(--blood)' : 'var(--moss)', `${u.hp}/${mh}`)}${bar('Sättigung', u.sat, 100, u.sat < 30 ? 'var(--blood)' : '#b9874a', pct(u.sat) + '%')}${bar('Energie', en, 100, en < 30 ? 'var(--blood)' : '#6f9fb8', pct(en) + '%')}${bad ? `<div class="chips">${bad}</div>` : ''}</div>`;
   }
-  function evHeader(step) { const p = s.pending, u = G.byId(s, p.uid), t = G.tileAt(s, u.x, u.y), ev = G.EV[p.ev]; return `${statusStrip()}<div class="ev-head"><span class="chip">${G.BIOMES[t.biome].name} · ${G.LOCS[t.loc]} · ${G.season(s).name} · ${G.isNight(s) ? 'Nacht' : 'Tag'}</span>${stepsHtml(step)}</div><h2>${ev.title}</h2>`; }
+  function evHeader(step) { const p = s.pending, u = G.byId(s, p.uid), t = G.tileAt(s, u.x, u.y), ev = G.EV[p.ev]; const why = s.evWhy && s.evWhy !== 'takt' ? `<span class="chip warn-chip">Außer der Reihe: ${{ feuer: 'Feuer', rivale: 'ein Rivale kehrt zurück', begegnung: 'Begegnung', not: 'Not' }[s.evWhy] || 'Lage'}</span>` : ''; return `${statusStrip()}<div class="ev-head"><span class="chip">${G.BIOMES[t.biome].name} · ${G.LOCS[t.loc]} · ${G.season(s).name} · ${G.isNight(s) ? 'Nacht' : 'Tag'}</span>${why}${stepsHtml(step)}</div><h2>${ev.title}</h2>`; }
   const evScene = () => ({ ev: s.pending.ev, foeId: s.pending.targetId });
 
   /* ---------- Rundenablauf ---------- */
@@ -3050,7 +3601,7 @@ const Scenes = (function () {
     const se = G.seasonOf(s.round + 1), night = (s.round + 1) % 2 === 0;
     $('clockT').textContent = `Runde ${s.round + 1} · ${se.name} · ${night ? 'Nacht' : 'Tag'}`;
     snd('clock');
-    const t0 = performance.now(), D = reduce ? 200 : 950;
+    const t0 = performance.now(), D = reduce ? 200 : prefs.auto ? (prefs.tempo === 'schnell' ? 250 : 450) : 950;
     await new Promise(res => {
       const frame = now => {
         const p = Math.min(1, (now - t0) / D);
@@ -3070,7 +3621,7 @@ const Scenes = (function () {
   async function nextRound() {
     if (!s || busy || s.over) return;
     busy = true; $('btnNext').disabled = true; $('report').hidden = true; renderCalls();
-    if (mobile() && pane !== 'map') setPane('map');
+    if (mobile() && pane !== 'map' && !prefs.auto) setPane('map');
     { const t = tele(), now = Date.now(); t.rt.push(Math.round((now - t.last) / 1000)); t.last = now; }
     await clockAnim();
     const o = G.beginRound(s);
@@ -3154,7 +3705,7 @@ const Scenes = (function () {
     const w = G.worldPhase(s);
     const m = me(); if (m) sel = { x: m.x, y: m.y };
     const mr = $('map').getBoundingClientRect();
-    if (mr.top < -mr.height / 2 || mr.top > window.innerHeight - 200) { $('map').scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' }); await wait(350); }
+    if (!prefs.auto && (mr.top < -mr.height / 2 || mr.top > window.innerHeight - 200)) { $('map').scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' }); await wait(350); }
     renderTop(); await animateMoves(w.moves); render();
     if (s.births > births0 && s.log.some(e => e.r === s.round && /Nachwuchs/.test(e.t))) snd('birth');
     if (s.fight) { openFight(() => { G.endFight(s); closeModal(); finishWorld(); }); return; }
@@ -3168,7 +3719,8 @@ const Scenes = (function () {
     const m = me(); if (m) sel = { x: m.x, y: m.y };
     render(); renderReport(r);
     announceLosses(); if (!s.over) warnThreats();
-    if (mobile() && !$('report').hidden) { const rr = $('report').getBoundingClientRect(), lim = window.innerHeight - 150; if (rr.bottom > lim) window.scrollBy({ top: Math.max(0, Math.min(rr.top - 70, rr.bottom - lim)), behavior: reduce ? 'auto' : 'smooth' }); }
+    if (mobile() && !prefs.auto && !$('report').hidden) { const rr = $('report').getBoundingClientRect(), lim = window.innerHeight - 150; if (rr.bottom > lim) window.scrollBy({ top: Math.max(0, Math.min(rr.top - 70, rr.bottom - lim)), behavior: reduce ? 'auto' : 'smooth' }); }
+    await announceEvos();
     await checkUnlocks();
     if (s.boonPick && !s.over) { await new Promise(res => openLegacy(res)); }
     if (s.heirPick && !s.over) { await new Promise(res => openHeir(res)); }
@@ -3176,9 +3728,42 @@ const Scenes = (function () {
   }
   function finishUp() {
     busy = false; render();
-    if (s.over) { openGameOver(); return; }
+    if (s.over) { stopAuto(); openGameOver(); return; }
     const m = me();
     if (m && m.alive && (m.pts > 0 || m.picks > 0)) { snd('level'); openLevelUp(m); }
+    scheduleAuto();
+  }
+  /* ---------- Welt läuft von selbst ---------- */
+  let prefs = { auto: true, tempo: 'normal' };
+  try { const p = JSON.parse(localStorage.getItem(PREFS) || 'null'); if (p) prefs = Object.assign(prefs, p); } catch (e) { /* egal */ }
+  const savePrefs = () => { try { localStorage.setItem(PREFS, JSON.stringify(prefs)); } catch (e) { /* egal */ } };
+  const TEMPO = { langsam: 3200, normal: 1700, schnell: 650 };
+  let autoT = null;
+  function scheduleAuto(ms) {
+    clearTimeout(autoT);
+    if (!prefs.auto || !s || s.over) return;
+    autoT = setTimeout(() => {
+      if (!prefs.auto || !s || s.over) return;
+      if (busy || !$('modal').hidden || $('game').hidden || document.hidden) { scheduleAuto(500); return; }
+      nextRound();
+    }, ms || TEMPO[prefs.tempo] || 1700);
+  }
+  function stopAuto() { clearTimeout(autoT); }
+  function renderPlay() {
+    const b = $('btnAuto'); if (!b) return;
+    b.textContent = prefs.auto ? (mobile() ? '❚❚ Pause' : '❚❚ Anhalten') : (mobile() ? '▶ Laufen lassen' : '▶ Welt laufen lassen');
+    b.setAttribute('aria-pressed', prefs.auto ? 'true' : 'false');
+    b.classList.toggle('primary', !prefs.auto); b.classList.toggle('running', prefs.auto);
+    $('btnNext').classList.toggle('primary', false);
+    $('tempoSel').value = prefs.tempo;
+    if (!s) return;
+    const n = G.nextEventIn(s), m = me();
+    const evTxt = s.over ? '' : n === 0 ? 'Diese Runde: Ereignis' : `Nächstes Ereignis in ${n} ${n === 1 ? 'Runde' : 'Runden'}`;
+    $('nextHint').textContent = `${evTxt}${s.goal && m ? ` · Ziel ⚑ gesetzt` : ''}${prefs.auto || mobile() ? '' : ' · Taste N: eine Runde, Leertaste: laufen lassen'}`;
+  }
+  function toggleAuto(on) {
+    prefs.auto = on === undefined ? !prefs.auto : on; savePrefs(); renderPlay(); snd('tap');
+    if (prefs.auto) scheduleAuto(400); else stopAuto();
   }
 
   /* ---------- Belohnung für Legenden ---------- */
@@ -3196,9 +3781,9 @@ const Scenes = (function () {
     const ids = (s.heirPick || []).filter(id => { const u = G.byId(s, id); return u && u.alive; });
     if (ids.length < 2) { if (ids.length === 1) G.setHeir(s, ids[0]); s.heirPick = null; save(); render(); if (done) done(); return; }
     busy = true;
-    const card = u => `<button class="choice heir" data-h="${u.id}"><span class="heir-spr" data-u="${u.id}"></span><span><span class="c-l">${esc(u.name)} · Level ${u.lvl}</span><span class="c-m">Generation ${u.gen || 1} · ${ageTxt(u)} (${G.ageOf(s, u)}/${u.life}) · ${G.BEHAV[u.beh].name} · ${u.hp}/${G.maxHp(s, u)} LP<br>ST ${u.st} · GE ${u.ge} · KO ${u.ko} · WE ${u.we}${u.traits.length ? ' · ' + u.traits.map(k => (G.LEARN[k] || G.UNLOCK[k] || { name: k }).name).join(', ') : ''}</span></span></button>`;
+    const card = u => `<button class="choice heir" data-h="${u.id}"><span class="heir-spr" data-u="${u.id}"></span><span><span class="c-l">${esc(u.name)} · Level ${u.lvl}${u.form ? ' · ' + esc(G.FORMS[u.form].n) : ''}</span><span class="c-m">Generation ${u.gen || 1} · ${ageTxt(u)} (${G.ageOf(s, u)}/${u.life}) · ${G.BEHAV[u.beh].name} · ${u.hp}/${G.maxHp(s, u)} LP<br>ST ${u.st} · GE ${u.ge} · KO ${u.ko} · WE ${u.we}${u.traits.length ? ' · ' + u.traits.map(k => (G.LEARN[k] || G.UNLOCK[k] || { name: k }).name).join(', ') : ''}</span></span></button>`;
     openModal(`<p class="eyebrow">Erbfolge</p><h2>Wer soll das Rudel führen?</h2><p class="intro">Das Rudel blickt auf dich. Wähle das neue Alphatier. Es erlebt ab jetzt die Ereignisse und trägt die Hoffnung deiner Art.</p><div class="choices">${ids.map(id => card(G.byId(s, id))).join('')}</div>`, 'Erbfolge');
-    $('sheet').querySelectorAll('.heir-spr').forEach(d => { const u = G.byId(s, +d.dataset.u); d.appendChild(spriteCanvas(s.species[0].cls, s.species[0].color, 3)); void u; });
+    $('sheet').querySelectorAll('.heir-spr').forEach(d => { const u = G.byId(s, +d.dataset.u); d.appendChild(spriteCanvas(s.species[0].cls, s.species[0].color, 3, undefined, u && u.form)); });
     $('sheet').querySelectorAll('[data-h]').forEach(b => b.addEventListener('click', () => { snd('level'); G.setHeir(s, +b.dataset.h); closeModal(); busy = false; save(); const m = me(); if (m) sel = { x: m.x, y: m.y }; render(); if (done) done(); }));
   }
 
@@ -3216,7 +3801,7 @@ const Scenes = (function () {
       else actions = `<div class="choices"><button class="choice" data-f="fight"><span class="c-l">Weiterkämpfen</span><span class="c-m">Deine Trefferchance <span class="odds">${Math.round(v.hit * 100)}%</span> · Gegner trifft dich zu <span class="odds">${Math.round(v.foeHit * 100)}%</span></span></button><button class="choice" data-f="flee"><span class="c-l">Fliehen</span><span class="c-m">Chance <span class="odds">${Math.round(v.flee * 100)}%</span> · misslingt die Flucht, schlägt der Gegner frei zu</span></button>${v.canSpare ? `<button class="choice" data-f="spare"><span class="c-l">Verschonen</span><span class="c-m">Der Gegner darf gehen. Er wird sich erinnern, im Guten oder im Bösen.</span></button>` : ''}</div>`;
       const allyLine = (v.meAllies.length || v.foeAllies.length) ? `<p class="allies">${v.meAllies.length ? `An deiner Seite: ${v.meAllies.map(a => esc(a.name)).join(', ')}` : 'Du kämpfst allein'} · ${v.foeAllies.length ? `beim Gegner: ${v.foeAllies.map(a => esc(a.name)).join(', ')}` : 'der Gegner kämpft allein'}</p>` : '<p class="allies">Niemand sonst auf dem Feld. Ein Kampf Tier gegen Tier.</p>';
       openModal(`${statusStrip()}<div class="ev-head"><span class="chip bad">Kampf · Schlagabtausch ${F.n + (F.over ? 0 : 1)} · ${G.isNight(s) ? 'Nacht' : 'Tag'}</span></div><h2>${F.over ? 'Der Kampf ist vorbei' : s.species[v.foe.sp].neutral ? 'Kampf gegen eine Legende' : 'Kampf auf Leben und Tod'}</h2><div class="fighters">${card(v.me, v.meMax, 'Du')}<div class="vs">VS</div>${card(v.foe, v.foeMax, s.species[v.foe.sp].name)}</div>${allyLine}<ul class="fight-log">${logItems}</ul>${actions}`, 'Kampf', 'blood');
-      $('sheet').querySelectorAll('.spr').forEach(d => { const u = G.byId(s, +d.dataset.u); d.appendChild(spriteCanvas(s.species[u.sp].cls, s.species[u.sp].color, 4, u.main && u.sp === 0 ? '#fff4dc' : undefined)); });
+      $('sheet').querySelectorAll('.spr').forEach(d => { const u = G.byId(s, +d.dataset.u); d.appendChild(spriteCanvas(s.species[u.sp].cls, s.species[u.sp].color, 4, u.main && u.sp === 0 ? '#fff4dc' : undefined, u.form)); });
       const lg = $('sheet').querySelector('.fight-log'); if (lg) lg.scrollTop = lg.scrollHeight;
       $('sheet').querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => {
         const r = G.fightStep(s, b.dataset.f);
@@ -3234,7 +3819,7 @@ const Scenes = (function () {
         <div class="chase-track" aria-label="Abstand ${c.dist} von ${c.goal}">${cells.join('')}</div>
         <ul class="fight-log">${logItems}</ul>
         <div class="choices">${c.opts.map(o => `<button class="choice${o.chance < .45 ? ' risky' : ''}" data-ch="${o.id}"><span class="c-l">${esc(o.l)}</span><span class="c-m">${esc(o.d)}${o.id === 'stellen' || o.id === 'rudel' ? '' : ` · Chance <span class="odds">${Math.round(o.chance * 100)}%</span>`}</span></button>`).join('')}</div>`, 'Hetzjagd', 'blood');
-      $('sheet').querySelectorAll('.chase-track i').forEach(d => { const u = d.dataset.c === 'me' ? v.me : v.foe; d.appendChild(spriteCanvas(s.species[u.sp].cls, s.species[u.sp].color, 3, u === v.me ? '#fff4dc' : undefined)); });
+      $('sheet').querySelectorAll('.chase-track i').forEach(d => { const u = d.dataset.c === 'me' ? v.me : v.foe; d.appendChild(spriteCanvas(s.species[u.sp].cls, s.species[u.sp].color, 3, u === v.me ? '#fff4dc' : undefined, u.form)); });
       $('sheet').querySelectorAll('[data-ch]').forEach(b => b.addEventListener('click', () => {
         const r = G.chaseStep(s, b.dataset.ch);
         snd(r.res === 'entkommen' ? 'success' : r.res === 'eingeholt' ? 'roar' : /trifft/.test(r.lines.join(' ')) ? 'hit' : /misslungen|holt auf|entdeckt/.test(r.lines.join(' ')) ? 'fail' : 'whoosh');
@@ -3278,7 +3863,7 @@ const Scenes = (function () {
   function storyText() { const st = G.sagaStory(s); return `${st.title}\n${st.sub}\n\n` + st.paras.map(p => `${p.h}\n${p.t}`).join('\n\n'); }
   function openCodex() {
     if (busy || !$('modal').hidden) return;
-    const tabs = [['zustand', 'Dein Alphatier'], ['arten', 'Arten & Bestimmung'], ['ahnen', 'Ahnen & Legende'], ['eigenschaften', 'Eigenschaften'], ['welt', 'Welt'], ['regeln', 'Regeln']];
+    const tabs = [['zustand', 'Dein Alphatier'], ['entwicklung', 'Entwicklung'], ['arten', 'Arten & Bestimmung'], ['ahnen', 'Ahnen & Legende'], ['eigenschaften', 'Eigenschaften'], ['welt', 'Welt'], ['regeln', 'Regeln']];
     const dl = (items) => `<dl>${items.map(([a, b]) => `<dt>${esc(a)}</dt><dd>${esc(b)}</dd>`).join('')}</dl>`;
     const body = () => {
       if (codexTab === 'zustand') {
@@ -3288,6 +3873,13 @@ const Scenes = (function () {
           <h4>Eigenschaften</h4>${u.traits.length ? dl(u.traits.map(k => { const d = G.LEARN[k] || G.UNLOCK[k] || { name: k, desc: '' }; return [d.name, d.desc]; })) : '<p class="muted">Noch keine.</p>'}
           <h4>Zustände</h4>${conds.length ? dl(conds.map(c => [c.t, c.d])) : '<p class="muted">Keine.</p>'}
           <h4>Fortschritt</h4>${dl(Object.entries(u.biomeR).map(([b, n]) => [G.BIOMES[b].name, `${n} Runden verbracht${n < 5 ? ` · noch ${5 - n} bis zur Biom-Eigenschaft` : ''}`]).concat([['Kämpfe überlebt', `${u.fights} von 3 für Narben`], ['Höhlen besucht', `${u.caves.length} von 3 für Höhlenkenner`], ['Ruinen gelöst', `${u.ruinWins} von 3 für Hohepriester`]]))}`;
+      }
+      if (codexTab === 'entwicklung') {
+        const tree = G.EVO[s.species[0].cls] || [];
+        const rivals = G.realSp(s).filter(x => !x.player && x.alive).map(x => { const fs = [...new Set(G.live(s).filter(u => u.sp === x.id && u.form).map(u => G.FORMS[u.form].n))]; return [x.plural, fs.length ? fs.join(', ') : 'noch keine Entwicklungen gesehen']; });
+        return `<h4>So funktioniert es</h4>${dl([['Von selbst', 'Mit Level 5 entwickelt sich ein Tier in eine von zwei Klassen. Welche, entscheiden sein höchster Wert, sein Charakter und seine Taten.'], ['Neubeginn', 'Das Level springt auf 1 zurück. Werte, Eigenschaften, Titel und Lebenspunkte bleiben, eine Fähigkeit kommt dazu.'], ['Legendenform', `Mit Level 5 in der Klasse und ab Runde ${G.EVO_ROUND2} folgt Stufe 2. Die Fähigkeit der Klasse bleibt erhalten.`], ['Vererbung', 'Hat ein Elternteil eine Form, erbt das Junge mit 50 % Chance eine Form der Eltern. Haben beide dieselbe, sind es 75 %. Ein Zuchttier (★) erhöht die Chance um 25 %.'], ['Bestimmung', 'Gewinnen kann eine Art nur, wenn mindestens eines ihrer Tiere eine Legendenform hat.'], ['Rivalen', 'Die anderen Arten entwickeln sich nach denselben Regeln.']])}
+          <h4>Stammbaum: ${esc(s.species[0].plural)}</h4>${tree.map(b => `<div class="cx-branch"><p><b>${esc(b.n)}</b> · Weg: ${esc(b.way)}<br>${esc(G.ABIL[b.ab].name)}: ${esc(G.ABIL[b.ab].desc)}</p><ul>${b.fin.map(f => `<li><b>${esc(f.n)}</b> · ${esc(f.o)}<br>Weg: ${esc(f.way)} · ${esc(G.ABIL[f.ab].name)}: ${esc(G.ABIL[f.ab].desc)}</li>`).join('')}</ul></div>`).join('')}
+          <h4>Entwicklungen der Rivalen</h4>${dl(rivals)}`;
       }
       if (codexTab === 'arten') {
         const rows = G.realSp(s).map(sp => { const d = G.destinyOf(s, sp.id); return [`${sp.player ? 'Du: ' : ''}${sp.plural} · ${d.name} (${d.cur}/${d.need})`, `${d.desc}${sp.alive ? '' : ' Ausgestorben.'}`]; });
@@ -3311,9 +3903,13 @@ const Scenes = (function () {
         ['Kampf', 'Angriff: W20 + ST-Modifikator gegen 10 + GE-Modifikator des Gegners. Schaden: W5 + ST-Modifikator. Dein Alphatier kämpft Schlag für Schlag und kann fliehen oder verschonen. Bis zu 2 Artgenossen auf demselben Feld kämpfen auf jeder Seite mit.'],
         ['Hetzjagd', 'Greift ein Jäger das Alphatier einer Beuteart an, beginnt erst eine Hetzjagd: davonrennen, ins Gelände flüchten, totstellen, einen Artgenossen zu Hilfe rufen oder sich stellen. Abstand 4 heißt entkommen, Abstand 0 heißt eingeholt, dann folgt der Kampf.'],
         ['Bewegung', 'Jedes Tier bewertet sein Feld und alle Nachbarfelder nach Futter, Rast, Gefahr, Artgenossen, Neugier, Revier, Charakter und Rudelruf. Unter „Warum hier?“ steht, was beim Alphatier den Ausschlag gab, auf der Karte zeigt eine gestrichelte Linie seinen Weg.'],
+        ['Takt', 'Die Welt läuft Runde für Runde weiter. Dein Alphatier erlebt alle 5 Runden ein Ereignis. Außer der Reihe kommt eines, wenn die Lage es verlangt: Begegnung, Feuer, Not oder ein zurückkehrender Rivale.'],
+        ['Eingriffe', 'Zwischen den Ereignissen lenkst du mit Rudelrufen, einem Ziel auf der Karte (Feld antippen, „Hierhin ziehen“), Fördern (+3 EP, einmal pro Runde) und der Zuchtwahl.'],
+        ['Laufen lassen', 'Mit „Welt laufen lassen“ folgen die Runden von selbst, mit kurzer Pause dazwischen. Bei Ereignissen, Kämpfen und Entscheidungen hält die Welt an, bis du entschieden hast.'],
+        ['Heilung', 'Wunden heilen nicht von selbst. LP kommen zurück durch Rast (ein Tier, das satt ist und nicht weiterzieht, heilt manchmal 1 LP), Wasser (+1), Oasen (+3), Ereignisse, Relikte und Level-Aufstiege.'],
         ['Bedürfnisse', 'Ist dein Alphatier hungrig (unter 35 % Sättigung) oder erschöpft (unter 35 % Energie), kommen Ereignisse mit Futter oder Rast deutlich häufiger.'],
         ['Gedächtnis', 'Tiere merken sich die letzten 5 Felder und kehren ungern dorthin zurück, außer Rufe, Revier oder Erschöpfung halten sie dort.'],
-        ['Reviere', 'Markierte Felder gehören deiner Art: +1 auf Proben, Angriff und Verteidigung, +1 LP und +5 % Energie pro Runde. Ihre Vegetation wächst jede Runde nach. Treffen Fremde auf Besitzer, wird gestritten.'],
+        ['Reviere', 'Markierte Felder gehören deiner Art: +1 auf Proben, Angriff und Verteidigung, +5 % Energie pro Runde. Ihre Vegetation wächst jede Runde nach. Treffen Fremde auf Besitzer, wird gestritten.'],
         ['Ketten', 'Verschonte Rivalen kehren zurück. Flüche lassen sich an Wasser oder Oasen abwaschen. Vorräte findest du an derselben Stelle wieder. Ruinen haben drei Stufen.'],
         ['Nebel', 'Was deine Tiere nicht sehen, verblasst nach 2 bis 4 Runden, Elefanten erinnern sich 6 Runden. Jäger sehen 2 Felder weit.']
       ])}`;
@@ -3340,7 +3936,7 @@ const Scenes = (function () {
       ${storyHtml()}
       <div class="survey-cta" id="svCta"><p><b>Spieltest:</b> 8 Kurzfragen zu dieser Partie, etwa 1 Minute.</p><button class="btn primary" id="svOpen">Kurzfragen beantworten</button></div>
       <div class="start-actions"><button class="btn" id="again">Neue Partie</button><button class="btn" id="copyStory">Legende kopieren</button><button class="icon-btn" id="look">Karte noch ansehen</button></div><p class="muted" id="copyMsg" aria-live="polite"></p>`, 'Spielende', o.win ? '' : 'blood');
-    $('again').addEventListener('click', () => { closeModal(); busy = false; s = null; $('game').hidden = true; $('start').hidden = false; renderStart(); window.scrollTo(0, 0); });
+    $('again').addEventListener('click', () => { stopAuto(); closeModal(); busy = false; s = null; $('game').hidden = true; $('start').hidden = false; renderStart(); window.scrollTo(0, 0); });
     $('look').addEventListener('click', () => { closeModal(); busy = true; $('tabbar').hidden = false; render(); });
     const answered = () => { const r = loadTests().find(x => x.gid === gid); return r && r.survey; };
     if (answered()) $('svCta').hidden = true;
@@ -3356,7 +3952,9 @@ const Scenes = (function () {
   $('btnStart').addEventListener('click', () => { try { Sound.ensure(); Sound.resume(); } catch (e) { /* egal */ } snd('season'); s = G.newGame(chosenCls, null, $('alphaName').value, chosenBeh || null); save(); enterGame(); });
   $('btnContinue').addEventListener('click', () => { try { Sound.ensure(); Sound.resume(); } catch (e) { /* egal */ } const sv = loadSaved(); if (sv) { s = sv; enterGame(); } });
   $('unlockAll').addEventListener('click', () => { meta.unlocked = Object.keys(UNLOCK_RULES); saveMeta(); snd('unlock'); renderStart(); });
-  $('btnNext').addEventListener('click', nextRound);
+  $('btnNext').addEventListener('click', () => { if (prefs.auto) toggleAuto(false); nextRound(); });
+  $('btnAuto').addEventListener('click', () => toggleAuto());
+  $('tempoSel').addEventListener('change', e => { prefs.tempo = e.target.value; savePrefs(); renderPlay(); if (prefs.auto) scheduleAuto(400); });
   $('btnCodex').addEventListener('click', openCodex);
   $('btnSound').addEventListener('click', () => { Sound.setOn(!Sound.isOn()); renderTop(); updateAmbience(); });
   $('destinyChip').addEventListener('click', () => { codexTab = 'arten'; openCodex(); });
@@ -3369,7 +3967,7 @@ const Scenes = (function () {
     $('qYes').addEventListener('click', () => {
       try { localStorage.removeItem(SAVE); } catch (e) { /* egal */ }
       const gid = s.round > 3 ? recordGame('abgebrochen') : null;
-      const leave = () => { closeModal(); s = null; $('game').hidden = true; $('start').hidden = false; renderStart(); window.scrollTo(0, 0); };
+      const leave = () => { stopAuto(); closeModal(); s = null; $('game').hidden = true; $('start').hidden = false; renderStart(); window.scrollTo(0, 0); };
       if (gid) openSurvey(gid, leave); else leave();
     });
     $('qNo').addEventListener('click', closeModal);
@@ -3385,7 +3983,11 @@ const Scenes = (function () {
     if (!s || !sel) return; const d = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }[e.key];
     if (!d) return; e.preventDefault(); sel = { x: Math.max(0, Math.min(8, sel.x + d[0])), y: Math.max(0, Math.min(8, sel.y + d[1])) }; drawMap(); renderTile();
   });
-  document.addEventListener('keydown', e => { if ((e.key === 'n' || e.key === 'N') && $('modal').hidden && s && !$('game').hidden && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'SELECT') nextRound(); });
+  document.addEventListener('keydown', e => {
+    if (!$('modal').hidden || !s || $('game').hidden || ['INPUT', 'SELECT', 'TEXTAREA', 'BUTTON'].includes(document.activeElement.tagName)) return;
+    if (e.key === 'n' || e.key === 'N') { if (prefs.auto) toggleAuto(false); nextRound(); }
+    if (e.key === ' ') { e.preventDefault(); toggleAuto(); }
+  });
   window.addEventListener('resize', () => { if (s) sizeMap(); });
   renderStart();
 })();
